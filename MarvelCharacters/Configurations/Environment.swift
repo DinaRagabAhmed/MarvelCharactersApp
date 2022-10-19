@@ -24,6 +24,7 @@ enum Environment {
         guard let rootURLstring = Environment.infoDictionary[PlistKeys.baseURL] as? String else {
             fatalError("Storage URL not set in plist for this environment")
         }
+        
         let baseUrl = "https://\(rootURLstring)"
         guard let url = URL(string: baseUrl) else {
             fatalError("Root URL is invalid")
