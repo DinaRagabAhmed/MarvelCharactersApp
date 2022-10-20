@@ -8,4 +8,6 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-BASE_URL = api-stage.mosaada.click/api/
+BASE_URL = gateway.marvel.com:443/v1/public/
+API_KEY = 34d47e78117a409617d2b8531cbf6228
+API_HASH = d4d6dc1e15e0ee6d6ed70604f3ffca6f

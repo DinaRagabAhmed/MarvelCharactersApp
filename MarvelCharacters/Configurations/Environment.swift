@@ -11,6 +11,8 @@ enum Environment {
     
     enum PlistKeys {
         static let baseURL = "BASE_URL"
+        static let API_KEY = "API_KEY"
+        static let API_HASH = "API_HASH"
     }
     
     private static let infoDictionary: [String: Any] = {
@@ -30,5 +32,19 @@ enum Environment {
             fatalError("Root URL is invalid")
         }
         return url.absoluteString
+    }()
+    
+    static let APIKey: String = {
+        guard let APIKey = Environment.infoDictionary[PlistKeys.API_KEY] as? String else {
+            fatalError("Api key not set in plist for this environment")
+        }
+        return APIKey
+    }()
+    
+    static let APIHash: String = {
+        guard let APIHash = Environment.infoDictionary[PlistKeys.API_HASH] as? String else {
+            fatalError("Api key not set in plist for this environment")
+        }
+        return APIHash
     }()
 }

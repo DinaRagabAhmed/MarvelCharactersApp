@@ -14,6 +14,7 @@ class AppCoordinator: BaseCoordinator<Void> {
     private var router: Routing?
     private var navigationController: UINavigationController = {
         let navigationController = UINavigationController()
+        navigationController.navigationBar.isHidden = true
         return navigationController
     }()
 
@@ -24,8 +25,7 @@ class AppCoordinator: BaseCoordinator<Void> {
     @discardableResult
     override func start() -> Observable<Void> {
         self.childCoordinators.removeAll()
-        return Observable.never()
-      //  return navigateToCartVC()
+        return navigateToCharactersListVC()
     }
  
 
@@ -45,11 +45,11 @@ class AppCoordinator: BaseCoordinator<Void> {
         return coordinator.start()
     }
     
-//    func navigateToCartVC() -> Observable<Void> {
-//        let router = Router(navigationController: navigationController)
-//        let cartCoordinator = CartCoordinator(router: router)
-//
-//        self.router = router
-//        return startIntialScreen(coordinator: cartCoordinator)
-//    }
+    func navigateToCharactersListVC() -> Observable<Void> {
+        let router = Router(navigationController: navigationController)
+        let charactersListCoordinator = CharactersListCoordinator(router: router)
+
+        self.router = router
+        return startIntialScreen(coordinator: charactersListCoordinator)
+    }
 }

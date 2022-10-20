@@ -9,6 +9,5 @@ import Moya
 import RxSwift
 
 protocol DataManager {
-    func callApi<T: Codable>(target: TargetType, type: T.Type) -> Observable<Result<T?, NetworkError>>
-
+    func callApi<T: Codable>(target: TargetType, type: T.Type) -> Observable<Result<BasicDataResponse<T>?, NetworkError>>
 }

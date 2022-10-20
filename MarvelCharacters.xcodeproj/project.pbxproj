@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7043F782901774600B6D6FF /* CharactersListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F762901774600B6D6FF /* CharactersListVC.swift */; };
+		A7043F792901774600B6D6FF /* CharactersListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7043F772901774600B6D6FF /* CharactersListVC.xib */; };
+		A7043F7B2901776C00B6D6FF /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F7A2901776C00B6D6FF /* CharactersListViewModel.swift */; };
+		A7043F7D2901777C00B6D6FF /* CharactersListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F7C2901777C00B6D6FF /* CharactersListCoordinator.swift */; };
+		A7043F802901783800B6D6FF /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F7F2901783800B6D6FF /* BaseModel.swift */; };
+		A7043F8429017D1B00B6D6FF /* CharactersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F8329017D1B00B6D6FF /* CharactersService.swift */; };
+		A7043F862901826C00B6D6FF /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F852901826C00B6D6FF /* BasicResponse.swift */; };
+		A7043F88290182BF00B6D6FF /* BasicDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F87290182BF00B6D6FF /* BasicDataResponse.swift */; };
+		A7043F8A290185C000B6D6FF /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F89290185C000B6D6FF /* Character.swift */; };
+		A7043F8C29018B5D00B6D6FF /* Thumbnail .swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F8B29018B5D00B6D6FF /* Thumbnail .swift */; };
+		A7043F9229018E5A00B6D6FF /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F9029018E5A00B6D6FF /* CharacterCell.swift */; };
+		A7043F9329018E5A00B6D6FF /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7043F9129018E5A00B6D6FF /* CharacterCell.xib */; };
+		A7043F9529018FA400B6D6FF /* CollectionViewCell+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F9429018FA400B6D6FF /* CollectionViewCell+extensions.swift */; };
+		A7043F98290190CD00B6D6FF /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A7043F97290190CD00B6D6FF /* SDWebImage */; };
+		A7043F9B290191CC00B6D6FF /* DisposableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F9A290191CC00B6D6FF /* DisposableCollectionViewCell.swift */; };
+		A7043F9E2901A27C00B6D6FF /* UIScrollView_InfiniteScroll in Frameworks */ = {isa = PBXBuildFile; productRef = A7043F9D2901A27C00B6D6FF /* UIScrollView_InfiniteScroll */; };
+		A7043FA02901A4A100B6D6FF /* InfiniteScrollStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7043F9F2901A4A100B6D6FF /* InfiniteScrollStatus.swift */; };
 		A709BFDC2900B7E900822525 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = A709BFDB2900B7E900822525 /* Moya */; };
 		A709BFDE2900B7E900822525 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = A709BFDD2900B7E900822525 /* RxMoya */; };
 		A7A7518A29004BB000672EAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A7518929004BB000672EAA /* AppDelegate.swift */; };
@@ -38,6 +55,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7043F762901774600B6D6FF /* CharactersListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListVC.swift; sourceTree = "<group>"; };
+		A7043F772901774600B6D6FF /* CharactersListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharactersListVC.xib; sourceTree = "<group>"; };
+		A7043F7A2901776C00B6D6FF /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
+		A7043F7C2901777C00B6D6FF /* CharactersListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListCoordinator.swift; sourceTree = "<group>"; };
+		A7043F7F2901783800B6D6FF /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		A7043F8329017D1B00B6D6FF /* CharactersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersService.swift; sourceTree = "<group>"; };
+		A7043F852901826C00B6D6FF /* BasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
+		A7043F87290182BF00B6D6FF /* BasicDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDataResponse.swift; sourceTree = "<group>"; };
+		A7043F89290185C000B6D6FF /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		A7043F8B29018B5D00B6D6FF /* Thumbnail .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thumbnail .swift"; sourceTree = "<group>"; };
+		A7043F9029018E5A00B6D6FF /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		A7043F9129018E5A00B6D6FF /* CharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
+		A7043F9429018FA400B6D6FF /* CollectionViewCell+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+extensions.swift"; sourceTree = "<group>"; };
+		A7043F9A290191CC00B6D6FF /* DisposableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposableCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7043F9F2901A4A100B6D6FF /* InfiniteScrollStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollStatus.swift; sourceTree = "<group>"; };
 		A7A7518629004BB000672EAA /* MarvelCharacters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelCharacters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7A7518929004BB000672EAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7A7519229004BB300672EAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7043F98290190CD00B6D6FF /* SDWebImage in Frameworks */,
+				A7043F9E2901A27C00B6D6FF /* UIScrollView_InfiniteScroll in Frameworks */,
 				A709BFDE2900B7E900822525 /* RxMoya in Frameworks */,
 				A7C257F12900B11D002A1945 /* RxCocoa in Frameworks */,
 				A7C257EE2900B0F5002A1945 /* Toast in Frameworks */,
@@ -83,6 +117,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7043F722901771B00B6D6FF /* Characters List */ = {
+			isa = PBXGroup;
+			children = (
+				A7043F752901772E00B6D6FF /* Coordinator */,
+				A7043F742901772800B6D6FF /* View Model */,
+				A7043F732901772400B6D6FF /* View */,
+			);
+			path = "Characters List";
+			sourceTree = "<group>";
+		};
+		A7043F732901772400B6D6FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7043F762901774600B6D6FF /* CharactersListVC.swift */,
+				A7043F772901774600B6D6FF /* CharactersListVC.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7043F742901772800B6D6FF /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				A7043F7A2901776C00B6D6FF /* CharactersListViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		A7043F752901772E00B6D6FF /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A7043F7C2901777C00B6D6FF /* CharactersListCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		A7043F8D29018E2900B6D6FF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A7043F9029018E5A00B6D6FF /* CharacterCell.swift */,
+				A7043F9129018E5A00B6D6FF /* CharacterCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A7043F99290191B100B6D6FF /* Disposable */ = {
+			isa = PBXGroup;
+			children = (
+				A7043F9A290191CC00B6D6FF /* DisposableCollectionViewCell.swift */,
+			);
+			path = Disposable;
+			sourceTree = "<group>";
+		};
 		A7A7517D29004BAF00672EAA = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +218,7 @@
 				A7A751BB29004ECD00672EAA /* BaseView.swift */,
 				A7A751BD29004EFE00672EAA /* BaseVC.swift */,
 				A7A751C229004F9300672EAA /* BaseViewModel.swift */,
+				A7043F7F2901783800B6D6FF /* BaseModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -151,6 +238,7 @@
 			children = (
 				A7A751E229009E3100672EAA /* UITableView+extensions.swift */,
 				A7A751E429009E5700672EAA /* UIView+extensions.swift */,
+				A7043F9429018FA400B6D6FF /* CollectionViewCell+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -158,6 +246,7 @@
 		A7A751A129004C3700672EAA /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				A7043F722901771B00B6D6FF /* Characters List */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -204,8 +293,10 @@
 		A7A751A629004CA200672EAA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A7043F99290191B100B6D6FF /* Disposable */,
 				A7A751C72900501E00672EAA /* Utils.swift */,
 				A7A751C92900507400672EAA /* ViewModelProtocol.swift */,
+				A7043F9F2901A4A100B6D6FF /* InfiniteScrollStatus.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -213,6 +304,7 @@
 		A7A751A729004CAD00672EAA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A7043F8D29018E2900B6D6FF /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,6 +331,7 @@
 		A7A751EC29009F0B00672EAA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				A7043F8329017D1B00B6D6FF /* CharactersService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -246,6 +339,10 @@
 		A7A751ED29009F1500672EAA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A7043F852901826C00B6D6FF /* BasicResponse.swift */,
+				A7043F87290182BF00B6D6FF /* BasicDataResponse.swift */,
+				A7043F89290185C000B6D6FF /* Character.swift */,
+				A7043F8B29018B5D00B6D6FF /* Thumbnail .swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,6 +378,8 @@
 				A7C257F02900B11D002A1945 /* RxCocoa */,
 				A709BFDB2900B7E900822525 /* Moya */,
 				A709BFDD2900B7E900822525 /* RxMoya */,
+				A7043F97290190CD00B6D6FF /* SDWebImage */,
+				A7043F9D2901A27C00B6D6FF /* UIScrollView_InfiniteScroll */,
 			);
 			productName = MarvelCharacters;
 			productReference = A7A7518629004BB000672EAA /* MarvelCharacters.app */;
@@ -316,6 +415,8 @@
 				A7C257EC2900B0F4002A1945 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				A7C257EF2900B11C002A1945 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				A709BFDA2900B7E900822525 /* XCRemoteSwiftPackageReference "Moya" */,
+				A7043F96290190CD00B6D6FF /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				A7043F9C2901A27C00B6D6FF /* XCRemoteSwiftPackageReference "UIScrollView-InfiniteScroll" */,
 			);
 			productRefGroup = A7A7518729004BB000672EAA /* Products */;
 			projectDirPath = "";
@@ -333,6 +434,8 @@
 			files = (
 				A7A7519629004BB300672EAA /* LaunchScreen.storyboard in Resources */,
 				A7A751CD2900516800672EAA /* Localizable.strings in Resources */,
+				A7043F9329018E5A00B6D6FF /* CharacterCell.xib in Resources */,
+				A7043F792901774600B6D6FF /* CharactersListVC.xib in Resources */,
 				A7A7519329004BB300672EAA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,23 +447,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7043F7B2901776C00B6D6FF /* CharactersListViewModel.swift in Sources */,
 				A7A751EF29009F3300672EAA /* NetworkManager.swift in Sources */,
 				A7A751CA2900507500672EAA /* ViewModelProtocol.swift in Sources */,
 				A7A751EB29009EF800672EAA /* DataSource.swift in Sources */,
 				A7A751E929009EDB00672EAA /* DataManager.swift in Sources */,
+				A7043F9529018FA400B6D6FF /* CollectionViewCell+extensions.swift in Sources */,
 				A7A751BC29004ECD00672EAA /* BaseView.swift in Sources */,
+				A7043F802901783800B6D6FF /* BaseModel.swift in Sources */,
+				A7043F7D2901777C00B6D6FF /* CharactersListCoordinator.swift in Sources */,
 				A7A751DB290052DE00672EAA /* Router.swift in Sources */,
+				A7043F8429017D1B00B6D6FF /* CharactersService.swift in Sources */,
+				A7043F8C29018B5D00B6D6FF /* Thumbnail .swift in Sources */,
 				A7A751C329004F9300672EAA /* BaseViewModel.swift in Sources */,
 				A7A751DF2900532A00672EAA /* BaseCoodinator.swift in Sources */,
 				A7A751D7290052A500672EAA /* Drawable.swift in Sources */,
 				A7A751F52900A16700672EAA /* Environment.swift in Sources */,
+				A7043F9229018E5A00B6D6FF /* CharacterCell.swift in Sources */,
 				A7A751E529009E5700672EAA /* UIView+extensions.swift in Sources */,
+				A7043F9B290191CC00B6D6FF /* DisposableCollectionViewCell.swift in Sources */,
+				A7043F862901826C00B6D6FF /* BasicResponse.swift in Sources */,
 				A7A751C82900501E00672EAA /* Utils.swift in Sources */,
 				A7A751F129009F4B00672EAA /* NetworkManager+extension.swift in Sources */,
 				A7A751DD2900530600672EAA /* Coordinator.swift in Sources */,
 				A7A751D9290052BA00672EAA /* Routing.swift in Sources */,
+				A7043FA02901A4A100B6D6FF /* InfiniteScrollStatus.swift in Sources */,
 				A7A751E329009E3100672EAA /* UITableView+extensions.swift in Sources */,
 				A7A7518A29004BB000672EAA /* AppDelegate.swift in Sources */,
+				A7043F782901774600B6D6FF /* CharactersListVC.swift in Sources */,
+				A7043F8A290185C000B6D6FF /* Character.swift in Sources */,
+				A7043F88290182BF00B6D6FF /* BasicDataResponse.swift in Sources */,
 				A7A751E12900534800672EAA /* AppCoodinator.swift in Sources */,
 				A7A751C629004FBC00672EAA /* ErrorTypes.swift in Sources */,
 				A7A751BE29004EFE00672EAA /* BaseVC.swift in Sources */,
@@ -588,6 +704,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A7043F96290190CD00B6D6FF /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		A7043F9C2901A27C00B6D6FF /* XCRemoteSwiftPackageReference "UIScrollView-InfiniteScroll" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pronebird/UIScrollView-InfiniteScroll";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		A709BFDA2900B7E900822525 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -623,6 +755,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A7043F97290190CD00B6D6FF /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7043F96290190CD00B6D6FF /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		A7043F9D2901A27C00B6D6FF /* UIScrollView_InfiniteScroll */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7043F9C2901A27C00B6D6FF /* XCRemoteSwiftPackageReference "UIScrollView-InfiniteScroll" */;
+			productName = UIScrollView_InfiniteScroll;
+		};
 		A709BFDB2900B7E900822525 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A709BFDA2900B7E900822525 /* XCRemoteSwiftPackageReference "Moya" */;
