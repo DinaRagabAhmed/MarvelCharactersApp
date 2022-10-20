@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    /// SwifterSwift: Corner radius of view; also inspectable from Storyboard.
+    /// Corner radius of view; also inspectable from Storyboard.
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
