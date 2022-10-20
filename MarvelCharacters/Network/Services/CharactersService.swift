@@ -42,8 +42,12 @@ extension CharactersService: TargetType {
     // or just do a plain request without a body.
     var task: Task {
         switch self {
-        case .getCharachters(_, let limit, let offset):
-            return .requestParameters(parameters: ["offset": offset, "limit": limit], encoding: URLEncoding.queryString)
+        case .getCharachters(let name, let limit, let offset):
+            var parameters = ["offset": offset, "limit": limit] as [String: Any]
+            if name != nil {
+                parameters["name"] = name
+            }
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         }
     }
     

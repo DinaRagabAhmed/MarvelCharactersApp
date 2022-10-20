@@ -1,5 +1,5 @@
 //
-//  CharactersListViewModel.swift
+//  SearchViewModel.swift
 //  MarvelCharacters
 //
 //  Created by Dina Ragab on 20/10/2022.
@@ -9,16 +9,16 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class CharactersListViewModel: BaseViewModel {
+class SearchViewModel: BaseViewModel {
     
     struct Input {
-        let didTapSearchIcon: AnyObserver<Void>
+        let didTapCancelIcon: AnyObserver<Void>
     }
     
     struct Output {
         let charactersObservable: Observable<[MarvelCharacter]>
         let infiniteScrollObservable: Observable<InfiniteScrollStatus>
-        let screenRedirectionObservable: Observable<CharactersListRedirection>
+        let screenRedirectionObservable: Observable<SearchRedirection>
     }
     
     let output: Output
@@ -26,41 +26,47 @@ class CharactersListViewModel: BaseViewModel {
 
     private let charactersSubject: BehaviorRelay<[MarvelCharacter]> = BehaviorRelay(value: [MarvelCharacter]())
     private let infiniteScrollSubject: PublishSubject<InfiniteScrollStatus> = PublishSubject()
-    private let screenRedirectionSubject = PublishSubject<CharactersListRedirection>()
-    private let searchSubject = PublishSubject<Void>()
-    
+    private let screenRedirectionSubject = PublishSubject<SearchRedirection>()
+    private let cancelSubject = PublishSubject<Void>()
+
     var dataManager: DataManager?
 
     init(dataManager: DataManager?) {
         self.dataManager = dataManager
-        self.input = Input(didTapSearchIcon: searchSubject.asObserver())
+        self.input = Input(didTapCancelIcon: cancelSubject.asObserver())
         self.output = Output(charactersObservable: charactersSubject.asObservable(),
                              infiniteScrollObservable: infiniteScrollSubject.asObservable(),
                              screenRedirectionObservable: screenRedirectionSubject.asObservable())
         
         super.init()
-        
-        subscribeToSearchEvent()
+        subscribeToCancelEvent()
     }
     
-    func subscribeToSearchEvent() {
-        searchSubject.asObservable()
+    func subscribeToCancelEvent() {
+        cancelSubject.asObservable()
            .subscribe { [weak self] _ in
-               self?.screenRedirectionSubject.onNext(.search)
+               self?.screenRedirectionSubject.onNext(.back)
            }.disposed(by: disposeBag)
     }
 }
 
-// MARK: - Handle Network call and response
-extension CharactersListViewModel {
+// MARK: - Hablde Network call and response
+extension SearchViewModel {
     
-    func getCharactersList() {
+    func getFavouriteCharachters(keyword: String) {
+        self.offset = 0
+        self.charactersSubject.accept([])
+        self.infiniteScrollSubject.onNext(.reset)
+        self.getCharactersList(keyword: keyword)
+    }
+    
+    func getCharactersList(keyword: String) {
         
         if Utils.isConnectedToNetwork() {
-            if self.offset == 0 {
-                self.controlLoading(showLoading: true)
-            }
-            let target = CharactersService.getCharachters(limit: self.limit, offset: self.offset)
+            
+            let target = CharactersService.getCharachters(name: keyword,
+                                                          limit: self.limit,
+                                                          offset: self.offset)
             self.dataManager?.callApi(target: target, type: MarvelCharacter.self).subscribe(onNext: { [weak self] result in
                 print(result)
                 guard let self = self else { return }

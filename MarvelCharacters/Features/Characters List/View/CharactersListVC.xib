@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharactersListVC" customModule="MarvelCharacters" customModuleProvider="target">
             <connections>
                 <outlet property="charactersCollectionView" destination="mgQ-N5-aAa" id="3mE-S4-4O6"/>
+                <outlet property="searchBtn" destination="1fZ-52-pty" id="4zq-sj-aZL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,17 +20,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PxT-4U-vCc">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="70"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marvel-logo" translatesAutoresizingMaskIntoConstraints="NO" id="dW3-Gf-Q4V">
-                            <rect key="frame" x="117" y="20" width="180" height="90"/>
+                            <rect key="frame" x="117" y="-10" width="180" height="90"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="90" id="78J-Kl-Pmg"/>
                                 <constraint firstAttribute="width" constant="180" id="Tt9-BW-TQ1"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fZ-52-pty">
-                            <rect key="frame" x="364" y="45" width="40" height="40"/>
+                            <rect key="frame" x="364" y="15" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="8Rj-n6-Mp7"/>
                                 <constraint firstAttribute="height" constant="40" id="rtW-J1-CfK"/>
@@ -44,15 +45,15 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="dW3-Gf-Q4V" firstAttribute="centerX" secondItem="PxT-4U-vCc" secondAttribute="centerX" id="9KK-S2-pWj"/>
-                        <constraint firstAttribute="height" constant="110" id="alC-hJ-iGO"/>
+                        <constraint firstItem="dW3-Gf-Q4V" firstAttribute="centerY" secondItem="PxT-4U-vCc" secondAttribute="centerY" id="CEl-kL-e8Y"/>
+                        <constraint firstAttribute="height" constant="70" id="alC-hJ-iGO"/>
                         <constraint firstAttribute="trailing" secondItem="1fZ-52-pty" secondAttribute="trailing" constant="10" id="cLz-lK-OdK"/>
-                        <constraint firstAttribute="bottom" secondItem="dW3-Gf-Q4V" secondAttribute="bottom" id="dGm-E5-QQp"/>
                         <constraint firstItem="1fZ-52-pty" firstAttribute="centerY" secondItem="dW3-Gf-Q4V" secondAttribute="centerY" id="wyw-PB-Ht8"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mgQ-N5-aAa">
-                    <rect key="frame" x="0.0" y="110" width="414" height="786"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="0.0" y="114" width="414" height="782"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TvN-PM-dKx">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -67,7 +68,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mgQ-N5-aAa" secondAttribute="trailing" id="3Ea-wb-3Ah"/>
                 <constraint firstItem="mgQ-N5-aAa" firstAttribute="top" secondItem="PxT-4U-vCc" secondAttribute="bottom" id="88D-ti-t3y"/>
                 <constraint firstItem="mgQ-N5-aAa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TgM-O5-s1w"/>
-                <constraint firstItem="PxT-4U-vCc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X3g-67-S21"/>
+                <constraint firstItem="PxT-4U-vCc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="X3g-67-S21"/>
                 <constraint firstItem="PxT-4U-vCc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bv3-Cx-1hY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PxT-4U-vCc" secondAttribute="trailing" id="mJX-PN-FZ4"/>
                 <constraint firstAttribute="bottom" secondItem="mgQ-N5-aAa" secondAttribute="bottom" id="xwT-mI-IcO"/>

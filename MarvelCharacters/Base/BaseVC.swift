@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import MBProgressHUD
-import Toast
+import Toast_Swift
 
 // MARK: - Base View Controller
 class BaseVC: UIViewController {

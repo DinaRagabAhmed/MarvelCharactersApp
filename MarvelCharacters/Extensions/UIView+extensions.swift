@@ -35,6 +35,7 @@ extension UIView {
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.frame
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.backgroundColor = .clear
         self.addSubview(blurEffectView)
             self.sendSubviewToBack(blurEffectView)
     }

@@ -1,17 +1,15 @@
 //
-//  CharacterCell.swift
+//  FavouriteCharacterCell.swift
 //  MarvelCharacters
 //
 //  Created by Dina Ragab on 20/10/2022.
 //
 
 import UIKit
-import SDWebImage
 import RxSwift
 
-class CharacterCell: DisposableCollectionViewCell {
+class FavouriteCharacterCell: DisposableCollectionViewCell {
 
-    @IBOutlet weak var characterNameView: UIView!
     @IBOutlet weak var characterNameLabel: UILabel!
     @IBOutlet weak var characterImageView: UIImageView!
     

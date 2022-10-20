@@ -12,6 +12,7 @@ import UIScrollView_InfiniteScroll
 class CharactersListVC: BaseVC {
 
     // MARK: - Outlets
+    @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var charactersCollectionView: UICollectionView!
     
     // MARK: - Properties
@@ -30,6 +31,7 @@ class CharactersListVC: BaseVC {
     func setupBindings() {
         super.setupBindings(baseViewModel: viewModel)
         subscribeToInfiniteScroll()
+        subscribeToSearchEvent()
     }
     
     func setupCollectionView() {
@@ -57,6 +59,16 @@ class CharactersListVC: BaseVC {
             }.disposed(by: disposeBag)
     }
     
+    func setupPagination() {
+        charactersCollectionView.addInfiniteScroll { [weak self] _ -> Void in
+            self?.viewModel.getCharactersList()
+        }
+    }
+}
+
+// MARK: - Subscribers and Binding
+extension CharactersListVC {
+    
     func subscribeToInfiniteScroll() {
         viewModel
             .output.infiniteScrollObservable
@@ -77,10 +89,8 @@ class CharactersListVC: BaseVC {
             }).disposed(by: disposeBag)
     }
     
-    func setupPagination() {
-        charactersCollectionView.addInfiniteScroll { [weak self] _ -> Void in
-            self?.viewModel.getCharactersList()
-        }
+    func subscribeToSearchEvent() {
+        self.searchBtn.rx.tap.bind(to: self.viewModel.input.didTapSearchIcon).disposed(by: disposeBag)
     }
 }
 
