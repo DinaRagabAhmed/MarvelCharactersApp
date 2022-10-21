@@ -9,6 +9,9 @@ PODS:
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
+  - RxGesture (4.0.4):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
@@ -22,6 +25,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - Moya/RxSwift
   - RxCocoa
+  - RxGesture
   - SDWebImage
   - Toast-Swift
   - UIScrollView-InfiniteScroll
@@ -32,6 +36,7 @@ SPEC REPOS:
     - MBProgressHUD
     - Moya
     - RxCocoa
+    - RxGesture
     - RxRelay
     - RxSwift
     - SDWebImage
@@ -43,12 +48,13 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   UIScrollView-InfiniteScroll: a30af3dec185edd26d6ad50c521aa277f3ebf177
 
-PODFILE CHECKSUM: b96230303b99239df4edbfd4123d6da282c7f769
+PODFILE CHECKSUM: bdacc419ebd213cb092b04a5deb92c2575619555
 
 COCOAPODS: 1.11.2

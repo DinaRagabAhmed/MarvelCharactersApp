@@ -37,6 +37,8 @@ class CharactersListCoordinator: BaseCoordinator<Void> {
                 switch redirection {
                 case .search:
                     self.redirectToSearchScreen()
+                case .characterDetails(let character):
+                    self.redirectToCharacterDetailsScreen(character: character)
                 }
             })
             .disposed(by: bag)
@@ -59,8 +61,24 @@ extension CharactersListCoordinator {
          
         searchCoordinator.start()
     }
+    
+    func redirectToCharacterDetailsScreen(character: MarvelCharacter) {
+        let characterDetailsCoodinator = CharacterDetailsCoodinator(router: router,
+                                                                    character: character)
+        self.add(coordinator: characterDetailsCoodinator)
+         
+        characterDetailsCoodinator.isCompleted = { [weak self, weak characterDetailsCoodinator] in
+             guard let coordinator = characterDetailsCoodinator else {
+                 return
+             }
+             self?.remove(coordinator: coordinator)
+         }
+         
+        characterDetailsCoodinator.start()
+    }
 }
 
 enum CharactersListRedirection {
     case search
+    case characterDetails(character: MarvelCharacter)
 }

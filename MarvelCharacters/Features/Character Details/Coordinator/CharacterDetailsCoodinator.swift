@@ -1,26 +1,27 @@
 //
-//  SearchCoordinator.swift
+//  CharacterDetailsCoodinator.swift
 //  MarvelCharacters
 //
 //  Created by Dina Ragab on 20/10/2022.
 //
 
-import Foundation
 import RxSwift
 import UIKit
 
-class SearchCoordinator: BaseCoordinator<Void> {
+class CharacterDetailsCoodinator: BaseCoordinator<Void> {
     
     private let router: Routing
-
-    init(router: Routing) {
+    private let character: MarvelCharacter
+    
+    init(router: Routing, character: MarvelCharacter) {
         self.router = router
+        self.character = character
     }
     
     @discardableResult
     override func start() -> Observable<Void> {
-        let viewController =  SearchVC()
-        let viewModel = SearchViewModel(dataManager: DataSource.provideNetworkDataSource())
+        let viewController =  CharacterDetailsVC()
+        let viewModel = CharacterDetailsViewModel(dataManager: DataSource.provideNetworkDataSource(), character: character)
         viewController.viewModel = viewModel
         
         router.push(viewController, isAnimated: true, onNavigateBack: isCompleted)
@@ -30,12 +31,13 @@ class SearchCoordinator: BaseCoordinator<Void> {
     }
     
     // Binding
-    func bindToScreenNavigation(viewModel: SearchViewModel) {
+    func bindToScreenNavigation(viewModel: CharacterDetailsViewModel) {
         viewModel.output.screenRedirectionObservable
             .subscribe(onNext: { [weak self](redirection) in
                 guard let self = self else { return }
                 switch redirection {
                 case .back:
+                    print("back")
                     self.router.pop(true)
                 }
             })
@@ -43,6 +45,6 @@ class SearchCoordinator: BaseCoordinator<Void> {
     }
 }
 
-enum SearchRedirection {
+enum CharacterDetailsRedirection {
     case back
 }

@@ -23,7 +23,7 @@ class BaseViewModel: ViewModelProtocol {
     private let isLoading: BehaviorRelay<Bool> = BehaviorRelay(value: false)
     private let generalErrors: PublishSubject<ErrorTypes> = PublishSubject()
     var offset = 0
-    var limit = 5
+    var limit = 10
     
     var disposeBag = DisposeBag()
 

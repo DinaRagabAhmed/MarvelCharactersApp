@@ -37,6 +37,13 @@ extension UIView {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.backgroundColor = .clear
         self.addSubview(blurEffectView)
-            self.sendSubviewToBack(blurEffectView)
+        self.sendSubviewToBack(blurEffectView)
+    }
+    
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
     }
 }

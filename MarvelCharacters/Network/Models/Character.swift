@@ -8,6 +8,8 @@
 import Foundation
 
 class MarvelCharacter: Codable {
+    var id: Int?
     var name: String?
     var thumbnail: Thumbnail?
+    var description: String?
 }

@@ -32,6 +32,7 @@ class CharactersListVC: BaseVC {
         super.setupBindings(baseViewModel: viewModel)
         subscribeToInfiniteScroll()
         subscribeToSearchEvent()
+        subscribeToCharacterSelection()
     }
     
     func setupCollectionView() {
@@ -40,8 +41,6 @@ class CharactersListVC: BaseVC {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: Constants.collectionViewCellHeight.rawValue)
         charactersCollectionView.setCollectionViewLayout(flowLayout, animated: true)
-        charactersCollectionView.infiniteScrollIndicatorView?.backgroundColor = .white
-        charactersCollectionView.infiniteScrollIndicatorView?.tintColor = .red
 
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.color = .white
@@ -87,6 +86,12 @@ extension CharactersListVC {
                     
                 }
             }).disposed(by: disposeBag)
+    }
+    
+    func subscribeToCharacterSelection() {
+        charactersCollectionView.rx.modelSelected(MarvelCharacter.self)
+            .bind(to: self.viewModel.input.selectedCharacterObserver)
+            .disposed(by: disposeBag)
     }
     
     func subscribeToSearchEvent() {

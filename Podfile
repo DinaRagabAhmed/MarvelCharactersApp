@@ -12,5 +12,7 @@ target 'MarvelCharacters' do
   pod 'SDWebImage'
   pod 'UIScrollView-InfiniteScroll'
   pod 'Toast-Swift'
+  pod "RxGesture"
+
 
 end

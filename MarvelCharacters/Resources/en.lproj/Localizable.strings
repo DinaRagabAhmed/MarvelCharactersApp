@@ -5,3 +5,10 @@
   Created by Dina Ragab on 19/10/2022.
   
 */
+
+"description" = "Description";
+"description_empty" = "No Description Provided";
+"events" = "Events";
+"comics" = "Comics";
+"series" = "Series";
+"stories" = "Stories";

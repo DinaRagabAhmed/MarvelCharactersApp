@@ -9,7 +9,8 @@ import UIKit
 import RxSwift
 
 class SearchVC: BaseVC {
-
+    
+    // MARK: - Outlets
     @IBOutlet weak var charactersCollectionView: UICollectionView!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -46,8 +47,6 @@ class SearchVC: BaseVC {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: Constants.collectionViewCellHeight.rawValue)
         charactersCollectionView.setCollectionViewLayout(flowLayout, animated: true)
-        charactersCollectionView.infiniteScrollIndicatorView?.backgroundColor = .white
-        charactersCollectionView.infiniteScrollIndicatorView?.tintColor = .red
 
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.color = .white
@@ -94,5 +93,4 @@ extension SearchVC {
 private enum Constants: CGFloat {
     case collectionViewCellHeight = 100
     case searchBarHeight = 50
-
 }
