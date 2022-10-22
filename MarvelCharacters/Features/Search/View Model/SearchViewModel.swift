@@ -80,7 +80,9 @@ extension SearchViewModel {
             let target = CharactersService.getCharachters(name: keyword,
                                                           limit: self.limit,
                                                           offset: self.offset)
-            self.dataManager?.callApi(target: target, type: MarvelCharacter.self).subscribe(onNext: { [weak self] result in
+            self.dataManager?.callApi(target: target,
+                                      type: [MarvelCharacter].self)
+                .subscribe(onNext: { [weak self] result in
                 print(result)
                 guard let self = self else { return }
                 self.controlLoading(showLoading: false)
@@ -113,17 +115,12 @@ extension SearchViewModel {
         if( result.isEmpty && charachters.isEmpty) {
             print("no data") // no data
             self.infiniteScrollSubject.onNext(.remove)
-           // self.screenStateSubject.onNext(.noData)
 
         } else if (!charachters.isEmpty && result.isEmpty ) {
             print("stop infintie scrolling") // no more data
             self.infiniteScrollSubject.onNext(.remove)
-         //   self.screenStateSubject.onNext(.dataLoaded)
         } else {
-            print("Populate data") // data add it to array
             self.infiniteScrollSubject.onNext(.finish)
-         //   self.screenStateSubject.onNext(.dataLoaded)
-
             charachters.append(contentsOf: result)
             self.offset += self.limit
 

@@ -11,7 +11,6 @@ import RxSwift
 
 class CharacterCell: DisposableCollectionViewCell {
 
-    @IBOutlet weak var characterNameView: UIView!
     @IBOutlet weak var characterNameLabel: UILabel!
     @IBOutlet weak var characterImageView: UIImageView!
     

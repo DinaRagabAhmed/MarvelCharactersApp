@@ -88,16 +88,13 @@ extension CharactersListVC {
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] scrollStatus in
                 guard let self = self else { return }
-                print("data")
                 switch scrollStatus {
                 case .remove:
                     self.charactersCollectionView.removeInfiniteScroll()
                 case .finish:
                     self.charactersCollectionView.finishInfiniteScroll()
                 case .reset:
-                    print("Reset data")
                     self.setupPagination()
-                    
                 }
             }).disposed(by: disposeBag)
     }

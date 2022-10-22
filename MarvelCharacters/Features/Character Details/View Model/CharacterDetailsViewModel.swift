@@ -106,7 +106,7 @@ extension CharacterDetailsViewModel {
     func getMediaTypeData(target: CharactersService) -> Observable<[CharacterMediaItem]>{
         return Observable<[CharacterMediaItem]>.create { [weak self] observer in
             self?.dataManager?.callApi(target: target,
-                                      type: CharacterMediaItem.self)
+                                      type: [CharacterMediaItem].self)
                 .subscribe(onNext: { result in
                 switch result {
                 case .success (let data):

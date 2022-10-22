@@ -75,7 +75,7 @@ extension CharactersListViewModel {
                 self.controlLoading(showLoading: true)
             }
             let target = CharactersService.getCharachters(limit: self.limit, offset: self.offset)
-            self.dataManager?.callApi(target: target, type: MarvelCharacter.self).subscribe(onNext: { [weak self] result in
+            self.dataManager?.callApi(target: target, type: [MarvelCharacter].self).subscribe(onNext: { [weak self] result in
                 print(result)
                 guard let self = self else { return }
                 self.controlLoading(showLoading: false)

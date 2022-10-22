@@ -71,7 +71,6 @@
             <connections>
                 <outlet property="characterImageView" destination="cPm-PB-9xV" id="JL6-ma-uk7"/>
                 <outlet property="characterNameLabel" destination="8eX-TZ-Jph" id="6g3-u5-tJH"/>
-                <outlet property="characterNameView" destination="O9K-Kd-ITT" id="vSb-l8-Qpw"/>
             </connections>
             <point key="canvasLocation" x="308.69565217391306" y="76.339285714285708"/>
         </collectionViewCell>

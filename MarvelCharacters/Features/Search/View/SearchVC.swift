@@ -40,8 +40,16 @@ class SearchVC: BaseVC {
     }
     
     func setupView() {
+        setStrings()
         self.view.addBlurEffect()
-        searchBar.updateHeight(height: Constants.searchBarHeight.rawValue)
+        self.searchBar.updateHeight(height: Constants.searchBarHeight.rawValue)
+      
+    }
+    
+    func setStrings() {
+        self.cancelBtn.setTitle("cancel".localized(), for: .normal)
+        self.cancelBtn.setTitle("cancel".localized(), for: .selected)
+        self.searchBar.placeholder = "search".localized()
     }
     
     func setupCollectionView() {

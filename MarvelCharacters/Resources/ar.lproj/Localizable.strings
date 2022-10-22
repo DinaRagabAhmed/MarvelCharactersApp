@@ -5,3 +5,17 @@
   Created by Dina Ragab on 19/10/2022.
   
 */
+
+//General
+"networkError" = "لا يوجد اتصال بالإنترنت";
+"noData" = "لايوجد بيانات";
+
+//Character Details
+"description" = "وصف";
+"description_empty" = "لا يوجد وصف مقدم";
+"events" = "الأحداث";
+"comics" = "كاريكاتير";
+"series" = "سلسلة";
+"stories" = "القصص";
+"cancel" = "إلغاء";
+"search" = "بحث";

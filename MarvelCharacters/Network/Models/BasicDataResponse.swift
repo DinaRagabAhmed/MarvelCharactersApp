@@ -8,5 +8,5 @@
 import Foundation
 
 class BasicDataResponse <T: Codable>:  Codable {
-    var results: [T]?
+    var results: T?
 }
