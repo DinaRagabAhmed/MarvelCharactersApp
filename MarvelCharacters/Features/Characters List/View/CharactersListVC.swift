@@ -12,7 +12,9 @@ import UIScrollView_InfiniteScroll
 class CharactersListVC: BaseVC {
 
     // MARK: - Outlets
+    @IBOutlet weak var noDataView: NoDataView!
     @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var noNetworkView: NoNetworkView!
     @IBOutlet weak var charactersCollectionView: UICollectionView!
     
     // MARK: - Properties
@@ -33,6 +35,8 @@ class CharactersListVC: BaseVC {
         subscribeToInfiniteScroll()
         subscribeToSearchEvent()
         subscribeToCharacterSelection()
+        subscribeToScreenState()
+        subscribeToNetworkReconnection()
     }
     
     func setupCollectionView() {
@@ -68,6 +72,16 @@ class CharactersListVC: BaseVC {
 // MARK: - Subscribers and Binding
 extension CharactersListVC {
     
+    func subscribeToSearchEvent() {
+        self.searchBtn.rx.tap.bind(to: self.viewModel.input.didTapSearchIcon).disposed(by: disposeBag)
+    }
+    
+    func subscribeToCharacterSelection() {
+        charactersCollectionView.rx.modelSelected(MarvelCharacter.self)
+            .bind(to: self.viewModel.input.selectedCharacterObserver)
+            .disposed(by: disposeBag)
+    }
+    
     func subscribeToInfiniteScroll() {
         viewModel
             .output.infiniteScrollObservable
@@ -88,14 +102,39 @@ extension CharactersListVC {
             }).disposed(by: disposeBag)
     }
     
-    func subscribeToCharacterSelection() {
-        charactersCollectionView.rx.modelSelected(MarvelCharacter.self)
-            .bind(to: self.viewModel.input.selectedCharacterObserver)
-            .disposed(by: disposeBag)
+    func subscribeToScreenState() {
+        viewModel
+            .output.screenStateObservable
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] screenStatus in
+                guard let self = self else { return }
+                switch screenStatus {
+                case .dataLoaded:
+                    self.charactersCollectionView.isHidden = false
+                    self.noDataView.isHidden = true
+                    self.noNetworkView.isHidden = true
+                case .noData:
+                    self.charactersCollectionView.isHidden = true
+                    self.noDataView.isHidden = false
+                    self.noNetworkView.isHidden = true
+                case .noNetwork:
+                    self.charactersCollectionView.isHidden = true
+                    self.noDataView.isHidden = true
+                    self.noNetworkView.isHidden = false
+                }
+            }).disposed(by: disposeBag)
     }
     
-    func subscribeToSearchEvent() {
-        self.searchBtn.rx.tap.bind(to: self.viewModel.input.didTapSearchIcon).disposed(by: disposeBag)
+    func subscribeToNetworkReconnection() {
+        noNetworkView.retryBtn.rx.tap
+        .throttle(RxTimeInterval.milliseconds(300), scheduler: MainScheduler.instance)
+        .subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            if Utils.isConnectedToNetwork() {
+                self.viewModel.getCharactersList()
+            }
+        })
+        .disposed(by: disposeBag)
     }
 }
 

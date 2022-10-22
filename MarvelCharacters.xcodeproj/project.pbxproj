@@ -70,6 +70,12 @@
 		A7A9DF5829020CF000478499 /* CharacterImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A9DF5629020CF000478499 /* CharacterImageCell.swift */; };
 		A7A9DF5929020CF000478499 /* CharacterImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A9DF5729020CF000478499 /* CharacterImageCell.xib */; };
 		A7C7F6E42904193D0006B97E /* CharacterDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7F6E32904193D0006B97E /* CharacterDetailsModel.swift */; };
+		A7C7F6EF29042BF80006B97E /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7F6ED29042BF70006B97E /* NoDataView.swift */; };
+		A7C7F6F029042BF80006B97E /* NoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7C7F6EE29042BF70006B97E /* NoDataView.xib */; };
+		A7C7F6F329042C020006B97E /* NoNetworkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7C7F6F129042C020006B97E /* NoNetworkView.xib */; };
+		A7C7F6F429042C020006B97E /* NoNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7F6F229042C020006B97E /* NoNetworkView.swift */; };
+		A7C7F6F729042D3C0006B97E /* ScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7F6F629042D3C0006B97E /* ScreenState.swift */; };
+		A7C7F6F929043F350006B97E /* AppDelegate+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7F6F829043F350006B97E /* AppDelegate+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +147,12 @@
 		A7A9DF5629020CF000478499 /* CharacterImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageCell.swift; sourceTree = "<group>"; };
 		A7A9DF5729020CF000478499 /* CharacterImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterImageCell.xib; sourceTree = "<group>"; };
 		A7C7F6E32904193D0006B97E /* CharacterDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsModel.swift; sourceTree = "<group>"; };
+		A7C7F6ED29042BF70006B97E /* NoDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
+		A7C7F6EE29042BF70006B97E /* NoDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataView.xib; sourceTree = "<group>"; };
+		A7C7F6F129042C020006B97E /* NoNetworkView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoNetworkView.xib; sourceTree = "<group>"; };
+		A7C7F6F229042C020006B97E /* NoNetworkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNetworkView.swift; sourceTree = "<group>"; };
+		A7C7F6F629042D3C0006B97E /* ScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenState.swift; sourceTree = "<group>"; };
+		A7C7F6F829043F350006B97E /* AppDelegate+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+extensions.swift"; sourceTree = "<group>"; };
 		B897FC16AC3F27F617DA5EB7 /* Pods_MarvelCharacters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharacters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -332,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				A7A7518929004BB000672EAA /* AppDelegate.swift */,
+				A7C7F6F829043F350006B97E /* AppDelegate+extensions.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -422,10 +435,10 @@
 		A7A751A629004CA200672EAA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A7C7F6F529042D280006B97E /* Models */,
 				A7043F99290191B100B6D6FF /* Disposable */,
 				A7A751C72900501E00672EAA /* Utils.swift */,
 				A7A751C92900507400672EAA /* ViewModelProtocol.swift */,
-				A7043F9F2901A4A100B6D6FF /* InfiniteScrollStatus.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -433,6 +446,7 @@
 		A7A751A729004CAD00672EAA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A7C7F6E529042BA80006B97E /* Custom Views */,
 				A7043F8D29018E2900B6D6FF /* Cells */,
 			);
 			path = Views;
@@ -550,6 +564,42 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A7C7F6E529042BA80006B97E /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				A7C7F6EC29042BE60006B97E /* No Data View */,
+				A7C7F6EB29042BDE0006B97E /* No Network View */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		A7C7F6EB29042BDE0006B97E /* No Network View */ = {
+			isa = PBXGroup;
+			children = (
+				A7C7F6F229042C020006B97E /* NoNetworkView.swift */,
+				A7C7F6F129042C020006B97E /* NoNetworkView.xib */,
+			);
+			path = "No Network View";
+			sourceTree = "<group>";
+		};
+		A7C7F6EC29042BE60006B97E /* No Data View */ = {
+			isa = PBXGroup;
+			children = (
+				A7C7F6ED29042BF70006B97E /* NoDataView.swift */,
+				A7C7F6EE29042BF70006B97E /* NoDataView.xib */,
+			);
+			path = "No Data View";
+			sourceTree = "<group>";
+		};
+		A7C7F6F529042D280006B97E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A7043F9F2901A4A100B6D6FF /* InfiniteScrollStatus.swift */,
+				A7C7F6F629042D3C0006B97E /* ScreenState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -611,9 +661,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7C7F6F329042C020006B97E /* NoNetworkView.xib in Resources */,
 				A7A7519629004BB300672EAA /* LaunchScreen.storyboard in Resources */,
 				A7A9DF5929020CF000478499 /* CharacterImageCell.xib in Resources */,
 				A7A751CD2900516800672EAA /* Localizable.strings in Resources */,
+				A7C7F6F029042BF80006B97E /* NoDataView.xib in Resources */,
 				A7043FA82901AF8700B6D6FF /* SearchVC.xib in Resources */,
 				A77FA8EB2902CA92002A661E /* CharacterMediaCell.xib in Resources */,
 				A77FA8F02902CB38002A661E /* MediaItemCell.xib in Resources */,
@@ -679,6 +731,7 @@
 				A7A751EF29009F3300672EAA /* NetworkManager.swift in Sources */,
 				A7A751CA2900507500672EAA /* ViewModelProtocol.swift in Sources */,
 				A7A751EB29009EF800672EAA /* DataSource.swift in Sources */,
+				A7C7F6F429042C020006B97E /* NoNetworkView.swift in Sources */,
 				A77FA8F42902D8A7002A661E /* String+extensions.swift in Sources */,
 				A7A9DF3F2901C04D00478499 /* SearchCoordinator.swift in Sources */,
 				A7A751E929009EDB00672EAA /* DataManager.swift in Sources */,
@@ -700,6 +753,7 @@
 				A7A751F52900A16700672EAA /* Environment.swift in Sources */,
 				A7043F9229018E5A00B6D6FF /* CharacterCell.swift in Sources */,
 				A7A751E529009E5700672EAA /* UIView+extensions.swift in Sources */,
+				A7C7F6F929043F350006B97E /* AppDelegate+extensions.swift in Sources */,
 				A7043F9B290191CC00B6D6FF /* DisposableCollectionViewCell.swift in Sources */,
 				A7043F862901826C00B6D6FF /* BasicResponse.swift in Sources */,
 				A7A751C82900501E00672EAA /* Utils.swift in Sources */,
@@ -709,6 +763,7 @@
 				A7A751DD2900530600672EAA /* Coordinator.swift in Sources */,
 				A7A751D9290052BA00672EAA /* Routing.swift in Sources */,
 				A7A9DF5829020CF000478499 /* CharacterImageCell.swift in Sources */,
+				A7C7F6F729042D3C0006B97E /* ScreenState.swift in Sources */,
 				A7A9DF512901F5B300478499 /* CharacterDetailsViewModel.swift in Sources */,
 				A7A9DF462901D13C00478499 /* FavouriteCharacterCell.swift in Sources */,
 				A7043FA02901A4A100B6D6FF /* InfiniteScrollStatus.swift in Sources */,
@@ -724,6 +779,7 @@
 				A7A751C629004FBC00672EAA /* ErrorTypes.swift in Sources */,
 				A7A9DF432901C99100478499 /* UIImage+extensions.swift in Sources */,
 				A7043FA72901AF8700B6D6FF /* SearchVC.swift in Sources */,
+				A7C7F6EF29042BF80006B97E /* NoDataView.swift in Sources */,
 				A7A751BE29004EFE00672EAA /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -879,6 +935,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2C86JD592M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MarvelCharacters/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -907,6 +964,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2C86JD592M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MarvelCharacters/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

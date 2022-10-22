@@ -17,19 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupApplicationCoordinator()
         setupIntialView()
+        enableIQkeyboard()
         
-        print(Environment.baseURL)
         return true
-    }
-    
-    func setupApplicationCoordinator() {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        applicationCoordinator = AppCoordinator(window: window)
-    }
-    
-    // Setup entry screen
-    func setupIntialView() {
-        applicationCoordinator?.start()
     }
 }
 

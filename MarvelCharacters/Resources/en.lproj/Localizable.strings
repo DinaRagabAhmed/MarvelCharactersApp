@@ -6,6 +6,11 @@
   
 */
 
+//General
+"networkError" = "No Internet Connection";
+"noData" = "No Data";
+
+//Character Details
 "description" = "Description";
 "description_empty" = "No Description Provided";
 "events" = "Events";

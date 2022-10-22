@@ -4,12 +4,15 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharactersListVC" customModule="MarvelCharacters" customModuleProvider="target">
             <connections>
                 <outlet property="charactersCollectionView" destination="mgQ-N5-aAa" id="3mE-S4-4O6"/>
+                <outlet property="noDataView" destination="vrM-vo-Pxb" id="IOy-oU-huq"/>
+                <outlet property="noNetworkView" destination="1XA-mv-Ynk" id="kSO-tg-fLB"/>
                 <outlet property="searchBtn" destination="1fZ-52-pty" id="4zq-sj-aZL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -51,6 +54,14 @@
                         <constraint firstItem="1fZ-52-pty" firstAttribute="centerY" secondItem="dW3-Gf-Q4V" secondAttribute="centerY" id="wyw-PB-Ht8"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1XA-mv-Ynk" customClass="NoNetworkView" customModule="MarvelCharacters" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="114" width="414" height="782"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrM-vo-Pxb" customClass="NoDataView" customModule="MarvelCharacters" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="114" width="414" height="782"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mgQ-N5-aAa">
                     <rect key="frame" x="0.0" y="114" width="414" height="782"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,10 +78,18 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mgQ-N5-aAa" secondAttribute="trailing" id="3Ea-wb-3Ah"/>
                 <constraint firstItem="mgQ-N5-aAa" firstAttribute="top" secondItem="PxT-4U-vCc" secondAttribute="bottom" id="88D-ti-t3y"/>
+                <constraint firstItem="1XA-mv-Ynk" firstAttribute="bottom" secondItem="mgQ-N5-aAa" secondAttribute="bottom" id="F3K-NQ-25D"/>
+                <constraint firstItem="1XA-mv-Ynk" firstAttribute="top" secondItem="mgQ-N5-aAa" secondAttribute="top" id="NXU-rA-zJ9"/>
+                <constraint firstItem="1XA-mv-Ynk" firstAttribute="trailing" secondItem="mgQ-N5-aAa" secondAttribute="trailing" id="Rho-Nn-Z7V"/>
                 <constraint firstItem="mgQ-N5-aAa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TgM-O5-s1w"/>
                 <constraint firstItem="PxT-4U-vCc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="X3g-67-S21"/>
                 <constraint firstItem="PxT-4U-vCc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bv3-Cx-1hY"/>
+                <constraint firstItem="vrM-vo-Pxb" firstAttribute="bottom" secondItem="mgQ-N5-aAa" secondAttribute="bottom" id="c0O-Fd-uKJ"/>
+                <constraint firstItem="vrM-vo-Pxb" firstAttribute="trailing" secondItem="mgQ-N5-aAa" secondAttribute="trailing" id="ij8-kc-Ajz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PxT-4U-vCc" secondAttribute="trailing" id="mJX-PN-FZ4"/>
+                <constraint firstItem="vrM-vo-Pxb" firstAttribute="top" secondItem="mgQ-N5-aAa" secondAttribute="top" id="nHe-QC-tua"/>
+                <constraint firstItem="vrM-vo-Pxb" firstAttribute="leading" secondItem="mgQ-N5-aAa" secondAttribute="leading" id="vZh-gz-Sfy"/>
+                <constraint firstItem="1XA-mv-Ynk" firstAttribute="leading" secondItem="mgQ-N5-aAa" secondAttribute="leading" id="vgT-ho-ZZJ"/>
                 <constraint firstAttribute="bottom" secondItem="mgQ-N5-aAa" secondAttribute="bottom" id="xwT-mI-IcO"/>
             </constraints>
             <point key="canvasLocation" x="139" y="68"/>
@@ -79,5 +98,8 @@
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="marvel-logo" width="700" height="394"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

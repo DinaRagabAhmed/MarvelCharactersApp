@@ -20,6 +20,7 @@ class CharactersListViewModel: BaseViewModel {
         let charactersObservable: Observable<[MarvelCharacter]>
         let infiniteScrollObservable: Observable<InfiniteScrollStatus>
         let screenRedirectionObservable: Observable<CharactersListRedirection>
+        let screenStateObservable: Observable<ScreenState>
     }
     
     let output: Output
@@ -30,6 +31,7 @@ class CharactersListViewModel: BaseViewModel {
     private let screenRedirectionSubject = PublishSubject<CharactersListRedirection>()
     private let searchSubject = PublishSubject<Void>()
     private let selectedCharacterSubject = PublishSubject<MarvelCharacter>()
+    private let screenStateSubject = PublishSubject<ScreenState>()
 
     var dataManager: DataManager?
 
@@ -39,7 +41,8 @@ class CharactersListViewModel: BaseViewModel {
                            selectedCharacterObserver: selectedCharacterSubject.asObserver())
         self.output = Output(charactersObservable: charactersSubject.asObservable(),
                              infiniteScrollObservable: infiniteScrollSubject.asObservable(),
-                             screenRedirectionObservable: screenRedirectionSubject.asObservable())
+                             screenRedirectionObservable: screenRedirectionSubject.asObservable(),
+                             screenStateObservable: screenStateSubject.asObservable())
         
         super.init()
         
@@ -82,7 +85,7 @@ extension CharactersListViewModel {
 
                 case .failure(let error):
                     if !Utils.isConnectedToNetwork() {
-                       // self.screenStateSubject.onNext(.noNetwork)
+                        self.screenStateSubject.onNext(.noNetwork)
                     } else {
                         self.setError(error: error.type ?? ErrorTypes.generalError)
                     }
@@ -91,10 +94,16 @@ extension CharactersListViewModel {
                 guard let self = self else { return }
                 self.controlLoading(showLoading: false)
                 self.setError(error: ErrorTypes.generalError)
+                self.infiniteScrollSubject.onNext(.finish)
             }).disposed(by: disposeBag)
         } else {
             self.controlLoading(showLoading: false)
-           // self.screenStateSubject.onNext(.noNetwork)
+            self.infiniteScrollSubject.onNext(.finish)
+            if self.offset == 0 {
+                self.screenStateSubject.onNext(.noNetwork)
+            } else {
+                self.setError(error: .networkError)
+            }
         }
     }
     
@@ -105,16 +114,16 @@ extension CharactersListViewModel {
         if( result.isEmpty && charachters.isEmpty) {
             print("no data") // no data
             self.infiniteScrollSubject.onNext(.remove)
-           // self.screenStateSubject.onNext(.noData)
+            self.screenStateSubject.onNext(.noData)
 
         } else if (!charachters.isEmpty && result.isEmpty ) {
             print("stop infintie scrolling") // no more data
             self.infiniteScrollSubject.onNext(.remove)
-         //   self.screenStateSubject.onNext(.dataLoaded)
+            self.screenStateSubject.onNext(.dataLoaded)
         } else {
             print("Populate data") // data add it to array
             self.infiniteScrollSubject.onNext(.finish)
-         //   self.screenStateSubject.onNext(.dataLoaded)
+            self.screenStateSubject.onNext(.dataLoaded)
 
             charachters.append(contentsOf: result)
             self.offset += self.limit

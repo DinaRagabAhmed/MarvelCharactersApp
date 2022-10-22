@@ -57,7 +57,7 @@ extension CharactersService: TargetType {
         case .getCharachters(let name, let limit, let offset):
             var parameters = ["offset": offset, "limit": limit] as [String: Any]
             if name != nil {
-                parameters["name"] = name
+                parameters["nameStartsWith"] = name
             }
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         case .getSeries, .getComics, .getEvents, .getStories:

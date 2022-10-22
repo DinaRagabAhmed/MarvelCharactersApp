@@ -22,6 +22,7 @@ class SearchVC: BaseVC {
         super.viewDidLoad()
         setupBindings()
         setupView()
+        setupPagination()
         setupCollectionView()
     }
     
@@ -35,10 +36,10 @@ class SearchVC: BaseVC {
        subscribeToSearchBar()
        subscribeToCancelEvent()
        subscribeToCharacterSelection()
+       subscribeToInfiniteScroll()
     }
     
     func setupView() {
-        self.view.addBlurEffect()
         searchBar.updateHeight(height: Constants.searchBarHeight.rawValue)
     }
     
@@ -64,20 +65,23 @@ class SearchVC: BaseVC {
                 cell.setData(character: character)
             }.disposed(by: disposeBag)
     }
-
+    
+    func setupPagination() {
+        charactersCollectionView.addInfiniteScroll { [weak self] _ -> Void in
+            self?.viewModel.getCharactersList(keyword: self?.searchBar.text ?? "")
+        }
+    }
 }
 
 // MARK: - Subscribers and Binding
 extension SearchVC {
     func subscribeToSearchBar() {
         searchBar.rx.text
-            .filter { $0 != nil && !($0?.isEmpty ?? false) }
             .distinctUntilChanged()
-            .debounce(.milliseconds(200), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .flatMapLatest { [weak self] query -> Observable<[MarvelCharacter]?> in
                 self?.viewModel.getFavouriteCharachters(keyword: query ?? "")
                 return Observable.never()
-                
             }
             .subscribe()
             .disposed(by: disposeBag)
@@ -95,9 +99,27 @@ extension SearchVC {
             .bind(to: self.viewModel.input.selectedCharacterObserver)
             .disposed(by: disposeBag)
     }
+    
+    func subscribeToInfiniteScroll() {
+        viewModel
+            .output.infiniteScrollObservable
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] scrollStatus in
+                guard let self = self else { return }
+                switch scrollStatus {
+                case .remove:
+                    self.charactersCollectionView.removeInfiniteScroll()
+                case .finish:
+                    self.charactersCollectionView.finishInfiniteScroll()
+                case .reset:
+                    print("Reset data")
+                    self.setupPagination()
+                }
+            }).disposed(by: disposeBag)
+    }
 }
 
 private enum Constants: CGFloat {
-    case collectionViewCellHeight = 100
+    case collectionViewCellHeight = 110
     case searchBarHeight = 50
 }

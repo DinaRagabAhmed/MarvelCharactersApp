@@ -68,7 +68,9 @@ extension SearchViewModel {
         self.offset = 0
         self.charactersSubject.accept([])
         self.infiniteScrollSubject.onNext(.reset)
-        self.getCharactersList(keyword: keyword)
+        if !keyword.isEmpty {
+            self.getCharactersList(keyword: keyword)
+        }
     }
     
     func getCharactersList(keyword: String) {
@@ -88,7 +90,7 @@ extension SearchViewModel {
 
                 case .failure(let error):
                     if !Utils.isConnectedToNetwork() {
-                       // self.screenStateSubject.onNext(.noNetwork)
+                        self.setError(error: .networkError)
                     } else {
                         self.setError(error: error.type ?? ErrorTypes.generalError)
                     }
@@ -100,7 +102,7 @@ extension SearchViewModel {
             }).disposed(by: disposeBag)
         } else {
             self.controlLoading(showLoading: false)
-           // self.screenStateSubject.onNext(.noNetwork)
+            self.setError(error: .networkError)
         }
     }
     

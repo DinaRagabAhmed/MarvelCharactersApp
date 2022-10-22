@@ -11,8 +11,9 @@ target 'MarvelCharacters' do
   pod 'MBProgressHUD'
   pod 'SDWebImage'
   pod 'UIScrollView-InfiniteScroll'
-  pod 'Toast-Swift'
   pod "RxGesture"
+  pod 'IQKeyboardManagerSwift'
+  pod 'Toaster'
 
 
 end
