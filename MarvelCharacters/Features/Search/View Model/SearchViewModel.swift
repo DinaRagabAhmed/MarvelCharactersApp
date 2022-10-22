@@ -13,8 +13,9 @@ class SearchViewModel: BaseViewModel {
     
     struct Input {
         let didTapCancelIcon: AnyObserver<Void>
+        let selectedCharacterObserver: AnyObserver<MarvelCharacter>
     }
-    
+
     struct Output {
         let charactersObservable: Observable<[MarvelCharacter]>
         let infiniteScrollObservable: Observable<InfiniteScrollStatus>
@@ -28,24 +29,34 @@ class SearchViewModel: BaseViewModel {
     private let infiniteScrollSubject: PublishSubject<InfiniteScrollStatus> = PublishSubject()
     private let screenRedirectionSubject = PublishSubject<SearchRedirection>()
     private let cancelSubject = PublishSubject<Void>()
+    private let selectedCharacterSubject = PublishSubject<MarvelCharacter>()
 
     var dataManager: DataManager?
 
     init(dataManager: DataManager?) {
         self.dataManager = dataManager
-        self.input = Input(didTapCancelIcon: cancelSubject.asObserver())
+        self.input = Input(didTapCancelIcon: cancelSubject.asObserver(),
+                           selectedCharacterObserver: selectedCharacterSubject.asObserver())
         self.output = Output(charactersObservable: charactersSubject.asObservable(),
                              infiniteScrollObservable: infiniteScrollSubject.asObservable(),
                              screenRedirectionObservable: screenRedirectionSubject.asObservable())
         
         super.init()
         subscribeToCancelEvent()
+        subscribeToCharachterSelection()
     }
     
     func subscribeToCancelEvent() {
         cancelSubject.asObservable()
            .subscribe { [weak self] _ in
                self?.screenRedirectionSubject.onNext(.back)
+           }.disposed(by: disposeBag)
+    }
+    
+    func subscribeToCharachterSelection() {
+        selectedCharacterSubject.asObservable()
+           .subscribe { [weak self] character in
+               self?.screenRedirectionSubject.onNext(.characterDetails(character: character))
            }.disposed(by: disposeBag)
     }
 }

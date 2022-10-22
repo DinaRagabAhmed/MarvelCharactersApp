@@ -6,38 +6,45 @@
 //
 
 import UIKit
+import RxSwift
 
-class CharacterAttributesCell: UITableViewCell {
+class CharacterMediaCell: DisposableTableViewCell {
 
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var mediaItemsCollectionView: UICollectionView!
+    @IBOutlet weak var mediaTypeLabel: UILabel!
     
-    var items = [CharacterAttributeItem]()
+    var items = [CharacterMediaItem]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCollectionView()
     }
-
-    func setData(data: CharacterAttributeData) {
-        self.titleLabel.text = data.title
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+        self.mediaItemsCollectionView.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
+    func setData(data: CharacterMediaData) {
+        self.mediaTypeLabel.text = data.title
         self.items = data.items
-        self.collectionView.reloadData()
+        self.mediaItemsCollectionView.reloadData()
     }
     
     func setupCollectionView() {
-        collectionView.dataSource = self
-        collectionView.contentInset = UIEdgeInsets.zero
-        collectionView.register(AttributeItemCell.nib, forCellWithReuseIdentifier: AttributeItemCell.identifier)
+        mediaItemsCollectionView.dataSource = self
+        mediaItemsCollectionView.contentInset = UIEdgeInsets.zero
+        mediaItemsCollectionView.register(MediaItemCell.nib, forCellWithReuseIdentifier: MediaItemCell.identifier)
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width/3.25) - 10,
                                      height: Constants.collectionViewCellHeight.rawValue)
-        collectionView.setCollectionViewLayout(flowLayout, animated: true)
+        mediaItemsCollectionView.setCollectionViewLayout(flowLayout, animated: true)
     }
 }
 
-extension CharacterAttributesCell: UICollectionViewDataSource {
+extension CharacterMediaCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
@@ -45,8 +52,8 @@ extension CharacterAttributesCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let itemCell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: AttributeItemCell.identifier, for: indexPath)
-            as? AttributeItemCell {
+            withReuseIdentifier: MediaItemCell.identifier, for: indexPath)
+            as? MediaItemCell {
             itemCell.setData(item: self.items[indexPath.row])
             return itemCell
         }

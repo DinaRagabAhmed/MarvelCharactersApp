@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="SEARCH" translatesAutoresizingMaskIntoConstraints="NO" id="8Ib-wl-D9A">
-                    <rect key="frame" x="10" y="54" width="315" height="50"/>
+                    <rect key="frame" x="10" y="54" width="315.5" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="GuZ-X0-btE"/>
                     </constraints>
@@ -46,7 +46,7 @@
                 </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dLD-dO-n1o" secondAttribute="trailing" constant="20" id="1RK-i1-Et8"/>
                 <constraint firstItem="dLD-dO-n1o" firstAttribute="leading" secondItem="8Ib-wl-D9A" secondAttribute="trailing" id="3J3-HZ-fdX"/>

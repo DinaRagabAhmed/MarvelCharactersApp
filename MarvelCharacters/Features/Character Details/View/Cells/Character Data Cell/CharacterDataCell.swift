@@ -30,5 +30,4 @@ class CharacterDataCell: UITableViewCell {
             characterDescriptionLabel.text = "description_empty".localized()
         }
     }
-    
 }

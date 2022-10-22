@@ -18,8 +18,8 @@ class CharacterDetailsVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBindings()
-        setupTableView()
+        self.setupBindings()
+        self.setupTableView()
         self.viewModel.viewDidLoad()
     }
     
@@ -39,8 +39,8 @@ class CharacterDetailsVC: BaseVC {
                            forCellReuseIdentifier: CharacterImageCell.identifier)
         tableView.register(CharacterDataCell.nib,
                            forCellReuseIdentifier: CharacterDataCell.identifier)
-        tableView.register(CharacterAttributesCell.nib,
-                           forCellReuseIdentifier: CharacterAttributesCell.identifier)
+        tableView.register(CharacterMediaCell.nib,
+                           forCellReuseIdentifier: CharacterMediaCell.identifier)
     }
     
     func setupCellCustomization() {
@@ -53,16 +53,16 @@ class CharacterDetailsVC: BaseVC {
     }
     
     func setupDataSource() {
-        self.viewModel.output.screenModelObservable
+        self.viewModel.output.characterDataObservable
             .bind(to: tableView.rx.items){ [weak self] (tableView, row, item) -> UITableViewCell in
                 switch item {
                 case .characterImage(let thumbnail):
-                    return self?.configureCharacterImageCell(from: tableView, index: IndexPath.init(row: row, section: 0), thumbnail: thumbnail) ?? UITableViewCell()
+                    return self?.configureCharacterImageCell(from: tableView, index: row, thumbnail: thumbnail) ?? UITableViewCell()
                 case .characterData(let character):
-                    return self?.configureCharacterDataCell(from: tableView, index: IndexPath.init(row: row, section: 0), character: character) ?? UITableViewCell()
-                case .characterAttributes(let attributes):
+                    return self?.configureCharacterDataCell(from: tableView, index: row, character: character) ?? UITableViewCell()
+                case .characterMedia(let attributes):
                     if !(attributes.items.isEmpty) {
-                        return self?.configureCharacterAttributesCell(from: tableView, index: IndexPath.init(row: row, section: 0), attributes: attributes) ?? UITableViewCell()
+                        return self?.configureCharacterMediaCell(from: tableView, index: row, mediaData: attributes) ?? UITableViewCell()
                     } else {
                         return UITableViewCell()
                     }
@@ -77,9 +77,10 @@ extension CharacterDetailsVC {
     
     //Charcter Image
     private func configureCharacterImageCell(from table: UITableView,
-                                             index: IndexPath,
+                                             index: Int,
                                              thumbnail: Thumbnail?) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: CharacterImageCell.identifier, for: index) as? CharacterImageCell
+        let cell = table.dequeueReusableCell(withIdentifier: CharacterImageCell.identifier,
+                                             for: IndexPath(row: index, section: 0)) as? CharacterImageCell
         cell?.setData(thumbnail: thumbnail)
         subscribeToDismissScreenEvent(cell: cell)
         return cell ?? UITableViewCell()
@@ -87,19 +88,21 @@ extension CharacterDetailsVC {
     
     //Charcter Name and description
     private func configureCharacterDataCell(from table: UITableView,
-                                            index: IndexPath,
+                                            index: Int,
                                             character: MarvelCharacter?) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: CharacterDataCell.identifier, for: index) as? CharacterDataCell
+        let cell = table.dequeueReusableCell(withIdentifier: CharacterDataCell.identifier,
+                                             for: IndexPath(row: index, section: 0)) as? CharacterDataCell
         cell?.setData(character: character)
         return cell ?? UITableViewCell()
     }
     
     //Charcter Attributes
-    private func configureCharacterAttributesCell(from table: UITableView,
-                                                  index: IndexPath,
-                                                  attributes: CharacterAttributeData) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: CharacterAttributesCell.identifier, for: index) as? CharacterAttributesCell
-        cell?.setData(data: attributes)
+    private func configureCharacterMediaCell(from table: UITableView,
+                                             index: Int,
+                                             mediaData: CharacterMediaData) -> UITableViewCell {
+        let cell = table.dequeueReusableCell(withIdentifier: CharacterMediaCell.identifier,
+                                             for: IndexPath(row: index, section: 0)) as? CharacterMediaCell
+        cell?.setData(data: mediaData)
         return cell ?? UITableViewCell()
     }
 }
@@ -111,7 +114,6 @@ extension CharacterDetailsVC {
         cell?.didTapBack
             .asObservable()
             .subscribe(onNext: { [weak self] status in
-                print("back")
                 self?.viewModel.dismissScreen()
             })
             .disposed(by: cell?.disposeBag ?? DisposeBag())

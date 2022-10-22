@@ -34,6 +34,7 @@ class SearchVC: BaseVC {
        super.setupBindings(baseViewModel: viewModel)
        subscribeToSearchBar()
        subscribeToCancelEvent()
+       subscribeToCharacterSelection()
     }
     
     func setupView() {
@@ -86,6 +87,12 @@ extension SearchVC {
     func subscribeToCancelEvent() {
         self.cancelBtn.rx.tap
             .bind(to: self.viewModel.input.didTapCancelIcon)
+            .disposed(by: disposeBag)
+    }
+    
+    func subscribeToCharacterSelection() {
+        charactersCollectionView.rx.modelSelected(MarvelCharacter.self)
+            .bind(to: self.viewModel.input.selectedCharacterObserver)
             .disposed(by: disposeBag)
     }
 }

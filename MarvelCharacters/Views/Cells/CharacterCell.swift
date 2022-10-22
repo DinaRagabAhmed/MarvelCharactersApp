@@ -40,5 +40,4 @@ class CharacterCell: DisposableCollectionViewCell {
             characterImageView.image = UIImage(named: "image-placeholder")
         }
     }
-
 }

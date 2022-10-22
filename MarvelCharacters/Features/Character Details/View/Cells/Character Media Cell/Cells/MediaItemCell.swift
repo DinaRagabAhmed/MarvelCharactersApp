@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AttributeItemCell: UICollectionViewCell {
+class MediaItemCell: UICollectionViewCell {
 
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
@@ -16,13 +16,13 @@ class AttributeItemCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func setData(item: CharacterAttributeItem) {
+    func setData(item: CharacterMediaItem) {
         itemName.text = item.title ?? ""
         if let thumbnail = item.thumbnail {
             let url = URL(string: "\(thumbnail.path ?? "").\(thumbnail.thumbnailExtension ?? "")")
             if let url = url {
                 itemImageView.sd_setImage(with: url,
-                                               placeholderImage: UIImage(named: "image-placeholder"))
+                                          placeholderImage: UIImage(named: "image-placeholder"))
             } else {
                 itemImageView.image = UIImage(named: "image-placeholder")
             }

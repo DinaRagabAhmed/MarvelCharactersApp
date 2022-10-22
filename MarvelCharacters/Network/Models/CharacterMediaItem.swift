@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CharacterAttributeItem: Codable {
+class CharacterMediaItem: Codable {
     var title: String?
     var thumbnail: Thumbnail?
 }

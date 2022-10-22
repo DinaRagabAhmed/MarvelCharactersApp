@@ -23,7 +23,6 @@ class CharacterDetailsCoodinator: BaseCoordinator<Void> {
         let viewController =  CharacterDetailsVC()
         let viewModel = CharacterDetailsViewModel(dataManager: DataSource.provideNetworkDataSource(), character: character)
         viewController.viewModel = viewModel
-        
         router.push(viewController, isAnimated: true, onNavigateBack: isCompleted)
         
         bindToScreenNavigation(viewModel: viewModel)
