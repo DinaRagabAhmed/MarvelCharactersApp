@@ -76,6 +76,7 @@
 		A7C7F6F429042C020006B97E /* NoNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7F6F229042C020006B97E /* NoNetworkView.swift */; };
 		A7C7F6F729042D3C0006B97E /* ScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7F6F629042D3C0006B97E /* ScreenState.swift */; };
 		A7C7F6F929043F350006B97E /* AppDelegate+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7F6F829043F350006B97E /* AppDelegate+extensions.swift */; };
+		A7C7F6FE290479500006B97E /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C7F6FD290479500006B97E /* UIColor+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +154,7 @@
 		A7C7F6F229042C020006B97E /* NoNetworkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoNetworkView.swift; sourceTree = "<group>"; };
 		A7C7F6F629042D3C0006B97E /* ScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenState.swift; sourceTree = "<group>"; };
 		A7C7F6F829043F350006B97E /* AppDelegate+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+extensions.swift"; sourceTree = "<group>"; };
+		A7C7F6FD290479500006B97E /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 		B897FC16AC3F27F617DA5EB7 /* Pods_MarvelCharacters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelCharacters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -379,6 +381,7 @@
 				A7A9DF402901C58000478499 /* UISearchBar+extensions.swift */,
 				A7A9DF422901C99100478499 /* UIImage+extensions.swift */,
 				A77FA8F32902D8A7002A661E /* String+extensions.swift */,
+				A7C7F6FD290479500006B97E /* UIColor+extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				A77FA8EF2902CB38002A661E /* MediaItemCell.swift in Sources */,
 				A7043F8A290185C000B6D6FF /* Character.swift in Sources */,
 				A7043F88290182BF00B6D6FF /* BasicDataResponse.swift in Sources */,
+				A7C7F6FE290479500006B97E /* UIColor+extensions.swift in Sources */,
 				A7A751E12900534800672EAA /* AppCoodinator.swift in Sources */,
 				A7A9DF412901C58000478499 /* UISearchBar+extensions.swift in Sources */,
 				A7A751C629004FBC00672EAA /* ErrorTypes.swift in Sources */,

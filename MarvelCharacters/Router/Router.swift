@@ -56,6 +56,7 @@ extension Router: Routing {
     }
     
     func dismissModule(animated: Bool) {
+        executeClosure(self.navigationController.presentedViewController ?? UIViewController())
         navigationController.dismiss(animated: true)
     }
         

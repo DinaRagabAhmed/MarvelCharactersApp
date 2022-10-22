@@ -23,8 +23,8 @@ class CharacterDetailsCoodinator: BaseCoordinator<Void> {
         let viewController =  CharacterDetailsVC()
         let viewModel = CharacterDetailsViewModel(dataManager: DataSource.provideNetworkDataSource(), character: character)
         viewController.viewModel = viewModel
-        router.push(viewController, isAnimated: true, onNavigateBack: isCompleted)
-        
+        router.present(viewController, isAnimated: true, onDismiss: isCompleted)
+
         bindToScreenNavigation(viewModel: viewModel)
         return Observable.never()
     }
@@ -36,8 +36,7 @@ class CharacterDetailsCoodinator: BaseCoordinator<Void> {
                 guard let self = self else { return }
                 switch redirection {
                 case .back:
-                    print("back")
-                    self.router.pop(true)
+                    self.router.dismissModule(animated: true)
                 }
             })
             .disposed(by: bag)

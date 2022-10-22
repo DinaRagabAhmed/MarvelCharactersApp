@@ -18,6 +18,7 @@ class CharacterDetailsVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setup()
         self.setupBindings()
         self.setupTableView()
         self.viewModel.viewDidLoad()
@@ -26,6 +27,10 @@ class CharacterDetailsVC: BaseVC {
     //Binding
     func setupBindings() {
         super.setupBindings(baseViewModel: viewModel)
+    }
+    
+    func setup() {
+        self.view.addBlurEffect()
     }
     
     func setupTableView() {

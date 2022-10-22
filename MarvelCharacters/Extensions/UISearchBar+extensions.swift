@@ -10,7 +10,9 @@ import UIKit
 extension UISearchBar {
     
     func updateHeight(height: CGFloat, radius: CGFloat = 15.0) {
-        let image: UIImage? = UIImage.imageWithColor(color: UIColor.darkGray.withAlphaComponent(0.2), size: CGSize(width: 1, height: height))
+        let image: UIImage? = UIImage.imageWithColor(color:
+                                                        UIColor().hexStringToUIColor(hex: "313131"),
+                                                     size: CGSize(width: 1, height: height))
         setSearchFieldBackgroundImage(image, for: .normal)
         for subview in self.subviews {
             for subSubViews in subview.subviews {

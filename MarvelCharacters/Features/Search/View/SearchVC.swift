@@ -40,6 +40,7 @@ class SearchVC: BaseVC {
     }
     
     func setupView() {
+        self.view.addBlurEffect()
         searchBar.updateHeight(height: Constants.searchBarHeight.rawValue)
     }
     
@@ -112,7 +113,6 @@ extension SearchVC {
                 case .finish:
                     self.charactersCollectionView.finishInfiniteScroll()
                 case .reset:
-                    print("Reset data")
                     self.setupPagination()
                 }
             }).disposed(by: disposeBag)

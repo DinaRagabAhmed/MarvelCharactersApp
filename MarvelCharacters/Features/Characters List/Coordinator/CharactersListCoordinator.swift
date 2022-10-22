@@ -23,7 +23,7 @@ class CharactersListCoordinator: BaseCoordinator<Void> {
         let viewModel = CharactersListViewModel(dataManager: DataSource.provideNetworkDataSource())
         viewController.viewModel = viewModel
         
-        router.push(viewController, isAnimated: true, onNavigateBack: isCompleted)
+        router.pushToRoot(viewController, isAnimated: true, onNavigateBack: isCompleted)
         
         bindToScreenNavigation(viewModel: viewModel)
         return Observable.never()
@@ -59,7 +59,14 @@ extension CharactersListCoordinator {
              self?.remove(coordinator: coordinator)
          }
          
-        searchCoordinator.start()
+        searchCoordinator.start().subscribe(onNext: { [weak self] result in
+            switch result {
+            case .characterDetails(let character):
+                self?.redirectToCharacterDetailsScreen(character: character)
+            case .back:
+                print("back")
+            }
+        }).disposed(by: self.bag)
     }
     
     func redirectToCharacterDetailsScreen(character: MarvelCharacter) {

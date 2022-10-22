@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import UIKit
 
-class SearchCoordinator: BaseCoordinator<Void> {
+class SearchCoordinator: BaseCoordinator<SearchResult> {
     
     private let router: Routing
 
@@ -17,31 +17,24 @@ class SearchCoordinator: BaseCoordinator<Void> {
         self.router = router
     }
     
-    @discardableResult
-    override func start() -> Observable<Void> {
+    
+    override func start() -> Observable<SearchResult> {
         let viewController =  SearchVC()
         let viewModel = SearchViewModel(dataManager: DataSource.provideNetworkDataSource())
         viewController.viewModel = viewModel
         
-        router.push(viewController, isAnimated: true, onNavigateBack: isCompleted)
+        router.present(viewController, isAnimated: true, onDismiss: isCompleted)
         
-        bindToScreenNavigation(viewModel: viewModel)
-        return Observable.never()
+        return subscribeToViewControllerResult(viewModel: viewModel)
     }
     
     // Binding
-    func bindToScreenNavigation(viewModel: SearchViewModel) {
-        viewModel.output.screenRedirectionObservable
-            .subscribe(onNext: { [weak self](redirection) in
-                guard let self = self else { return }
-                switch redirection {
-                case .back:
-                    self.router.pop(true)
-                case .characterDetails(let character):
-                    self.redirectToCharacterDetailsScreen(character: character)
-                }
-            })
-            .disposed(by: bag)
+    func subscribeToViewControllerResult(viewModel: SearchViewModel)
+    -> Observable<SearchResult> {
+        
+        return viewModel.output.screenRedirectionObservable.do(onNext: {[weak self]  _ in
+            self?.router.dismissModule(animated: true)
+        })
     }
 }
 
@@ -64,7 +57,8 @@ extension SearchCoordinator {
     }
 }
 
-enum SearchRedirection {
+enum SearchResult {
     case back
     case characterDetails(character: MarvelCharacter)
 }
+

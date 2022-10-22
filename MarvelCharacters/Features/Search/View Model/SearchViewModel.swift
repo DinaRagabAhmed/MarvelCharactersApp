@@ -19,7 +19,7 @@ class SearchViewModel: BaseViewModel {
     struct Output {
         let charactersObservable: Observable<[MarvelCharacter]>
         let infiniteScrollObservable: Observable<InfiniteScrollStatus>
-        let screenRedirectionObservable: Observable<SearchRedirection>
+        let screenRedirectionObservable: Observable<SearchResult>
     }
     
     let output: Output
@@ -27,7 +27,7 @@ class SearchViewModel: BaseViewModel {
 
     private let charactersSubject: BehaviorRelay<[MarvelCharacter]> = BehaviorRelay(value: [MarvelCharacter]())
     private let infiniteScrollSubject: PublishSubject<InfiniteScrollStatus> = PublishSubject()
-    private let screenRedirectionSubject = PublishSubject<SearchRedirection>()
+    private let screenRedirectionSubject = PublishSubject<SearchResult>()
     private let cancelSubject = PublishSubject<Void>()
     private let selectedCharacterSubject = PublishSubject<MarvelCharacter>()
 
