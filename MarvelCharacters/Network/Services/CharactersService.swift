@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import SwiftHash
 
 enum CharactersService {
     case getCharachters(name: String? = nil, limit: Int, offset: Int)
@@ -20,7 +21,9 @@ extension CharactersService: TargetType {
     
     // This is the base URL we'll be using, typically our server.
     var baseURL: URL {
-        let serverURL = "\(Environment.baseURL)?ts=1&apikey=\(Environment.APIKey)&hash=\(Environment.APIHash)"
+        let ts = Int(Date().timeIntervalSince1970)
+        let hash = MD5("\(ts)\(Environment.APIPrivateKey)\(Environment.APIKey)").lowercased()
+        let serverURL = "\(Environment.baseURL)?ts=\(ts)&apikey=\(Environment.APIKey)&hash=\(hash)"
 
         guard let url = URL(string: serverURL) else { fatalError("wrong baseURL in Route") }
         return url

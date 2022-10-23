@@ -13,7 +13,5 @@ target 'MarvelCharacters' do
   pod 'UIScrollView-InfiniteScroll'
   pod "RxGesture"
   pod 'IQKeyboardManagerSwift'
-  pod 'Toaster'
-
-
+  pod 'SwiftHash'
 end

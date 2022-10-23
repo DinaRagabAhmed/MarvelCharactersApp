@@ -19,7 +19,7 @@ class SearchViewModel: BaseViewModel {
     struct Output {
         let charactersObservable: Observable<[MarvelCharacter]>
         let infiniteScrollObservable: Observable<InfiniteScrollStatus>
-        let screenRedirectionObservable: Observable<SearchResult>
+        let screenResultObservable: Observable<SearchResult>
     }
     
     let output: Output
@@ -27,7 +27,7 @@ class SearchViewModel: BaseViewModel {
 
     private let charactersSubject: BehaviorRelay<[MarvelCharacter]> = BehaviorRelay(value: [MarvelCharacter]())
     private let infiniteScrollSubject: PublishSubject<InfiniteScrollStatus> = PublishSubject()
-    private let screenRedirectionSubject = PublishSubject<SearchResult>()
+    private let screenResultSubject = PublishSubject<SearchResult>()
     private let cancelSubject = PublishSubject<Void>()
     private let selectedCharacterSubject = PublishSubject<MarvelCharacter>()
 
@@ -39,7 +39,7 @@ class SearchViewModel: BaseViewModel {
                            selectedCharacterObserver: selectedCharacterSubject.asObserver())
         self.output = Output(charactersObservable: charactersSubject.asObservable(),
                              infiniteScrollObservable: infiniteScrollSubject.asObservable(),
-                             screenRedirectionObservable: screenRedirectionSubject.asObservable())
+                             screenResultObservable: screenResultSubject.asObservable())
         
         super.init()
         subscribeToCancelEvent()
@@ -49,14 +49,14 @@ class SearchViewModel: BaseViewModel {
     func subscribeToCancelEvent() {
         cancelSubject.asObservable()
            .subscribe { [weak self] _ in
-               self?.screenRedirectionSubject.onNext(.back)
+               self?.screenResultSubject.onNext(.back)
            }.disposed(by: disposeBag)
     }
     
     func subscribeToCharachterSelection() {
         selectedCharacterSubject.asObservable()
            .subscribe { [weak self] character in
-               self?.screenRedirectionSubject.onNext(.characterDetails(character: character))
+               self?.screenResultSubject.onNext(.characterDetails(character: character))
            }.disposed(by: disposeBag)
     }
 }

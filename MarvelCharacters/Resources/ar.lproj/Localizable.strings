@@ -9,6 +9,8 @@
 //General
 "networkError" = "لا يوجد اتصال بالإنترنت";
 "noData" = "لايوجد بيانات";
+"generalError" = "هناك شئ خاطئ، يرجى المحاولة فى وقت لاحق";
+"retry" = "أعد المحاولة";
 
 //Character Details
 "description" = "وصف";

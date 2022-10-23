@@ -10,4 +10,4 @@
 
 BASE_URL = gateway.marvel.com/v1/public/
 API_KEY = 34d47e78117a409617d2b8531cbf6228
-API_HASH = d4d6dc1e15e0ee6d6ed70604f3ffca6f
+API_PRIVATE_KEY = 047403b5d229f4b80de0714be8e2fa70f5fd2a69

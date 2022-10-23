@@ -8,7 +8,9 @@
 
 //General
 "networkError" = "No Internet Connection";
+"generalError" = "Some thing went wrong, please try again later";
 "noData" = "No Data";
+"retry" = "Retry";
 
 //Character Details
 "description" = "Description";

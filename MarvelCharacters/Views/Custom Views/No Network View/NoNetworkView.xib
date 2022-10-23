@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoNetworkView" customModule="MarvelCharacters" customModuleProvider="target">
             <connections>
+                <outlet property="noNetworkLabel" destination="nVS-XT-WaX" id="HzQ-zh-hhO"/>
                 <outlet property="retryBtn" destination="gQN-vX-zpu" id="d2i-Pl-Peh"/>
             </connections>
         </placeholder>

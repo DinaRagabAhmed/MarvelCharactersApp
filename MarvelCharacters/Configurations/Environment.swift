@@ -12,7 +12,7 @@ enum Environment {
     enum PlistKeys {
         static let baseURL = "BASE_URL"
         static let API_KEY = "API_KEY"
-        static let API_HASH = "API_HASH"
+        static let API_PRIVATE_KEY = "API_PRIVATE_KEY"
     }
     
     private static let infoDictionary: [String: Any] = {
@@ -41,10 +41,10 @@ enum Environment {
         return APIKey
     }()
     
-    static let APIHash: String = {
-        guard let APIHash = Environment.infoDictionary[PlistKeys.API_HASH] as? String else {
-            fatalError("Api key not set in plist for this environment")
+    static let APIPrivateKey: String = {
+        guard let APIPrivateKey = Environment.infoDictionary[PlistKeys.API_PRIVATE_KEY] as? String else {
+            fatalError("Api private ket not set in plist for this environment")
         }
-        return APIHash
+        return APIPrivateKey
     }()
 }

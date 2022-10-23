@@ -32,28 +32,9 @@ class SearchCoordinator: BaseCoordinator<SearchResult> {
     func subscribeToViewControllerResult(viewModel: SearchViewModel)
     -> Observable<SearchResult> {
         
-        return viewModel.output.screenRedirectionObservable.do(onNext: {[weak self]  _ in
+        return viewModel.output.screenResultObservable.do(onNext: {[weak self]  _ in
             self?.router.dismissModule(animated: true)
         })
-    }
-}
-
-// MARK: - Navigation
-extension SearchCoordinator {
-    
-    func redirectToCharacterDetailsScreen(character: MarvelCharacter) {
-        let characterDetailsCoodinator = CharacterDetailsCoodinator(router: router,
-                                                                    character: character)
-        self.add(coordinator: characterDetailsCoodinator)
-         
-        characterDetailsCoodinator.isCompleted = { [weak self, weak characterDetailsCoodinator] in
-             guard let coordinator = characterDetailsCoodinator else {
-                 return
-             }
-             self?.remove(coordinator: coordinator)
-         }
-         
-        characterDetailsCoodinator.start()
     }
 }
 

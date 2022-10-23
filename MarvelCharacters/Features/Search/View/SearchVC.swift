@@ -26,10 +26,6 @@ class SearchVC: BaseVC {
         setupCollectionView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     //Binding
     func setupBindings() {
        super.setupBindings(baseViewModel: viewModel)
@@ -87,7 +83,7 @@ extension SearchVC {
     func subscribeToSearchBar() {
         searchBar.rx.text
             .distinctUntilChanged()
-            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .flatMapLatest { [weak self] query -> Observable<[MarvelCharacter]?> in
                 self?.viewModel.getFavouriteCharachters(keyword: query ?? "")
                 return Observable.never()
