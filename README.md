@@ -9,10 +9,10 @@
   - Cocoa Pods
   
 - Network layer
- - Moya
+  - Moya
  
 - Design 
- - UIKit and XIBs.
+  - UIKit(XIBs).
 
 
 
