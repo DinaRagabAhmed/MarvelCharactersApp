@@ -9,6 +9,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/*
+ I found that "name" parameter in Marvel API returns only characters that its names match exactly the text in search bar(== not contains) so i sent email asking about that and i used "nameStartsWith" to workaroud this issue
+ */
 class SearchViewModel: BaseViewModel {
     
     struct Input {
@@ -80,10 +83,10 @@ extension SearchViewModel {
             let target = CharactersService.getCharachters(name: keyword,
                                                           limit: self.limit,
                                                           offset: self.offset)
+            self.dataManager?.cancelAllRequests()
             self.dataManager?.callApi(target: target,
                                       type: [MarvelCharacter].self)
                 .subscribe(onNext: { [weak self] result in
-                print(result)
                 guard let self = self else { return }
                 self.controlLoading(showLoading: false)
                 switch result {

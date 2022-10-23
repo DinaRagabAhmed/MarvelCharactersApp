@@ -21,10 +21,12 @@ class FavouriteCharacterCell: DisposableCollectionViewCell {
         super.prepareForReuse()
         disposeBag = DisposeBag()
         characterImageView.image = nil
+        characterNameLabel.removeHightLight()
     }
     
-    func setData(character: MarvelCharacter) {
+    func setData(character: MarvelCharacter, keyword: String) {
         characterNameLabel.text = character.name
+        characterNameLabel.highlight(searchedText: keyword, color: .red)
 
         if let thumbnail = character.thumbnail {
             let url = URL(string: "\(thumbnail.path ?? "").\(thumbnail.thumbnailExtension ?? "")")

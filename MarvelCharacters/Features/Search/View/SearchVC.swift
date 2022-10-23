@@ -8,6 +8,11 @@
 import UIKit
 import RxSwift
 
+/*
+ I found that "name" parameter in Marvel API returns only characters that its names match
+ exactly the text in search bar(== not contains) so i sent email asking about that and i used
+ "nameStartsWith" to workaroud this issue
+ */
 class SearchVC: BaseVC {
     
     // MARK: - Outlets
@@ -66,8 +71,8 @@ class SearchVC: BaseVC {
         viewModel.output.charactersObservable
             .observe(on: MainScheduler.instance)
             .bind(to: charactersCollectionView.rx.items(cellIdentifier: FavouriteCharacterCell.identifier,
-                                                        cellType: FavouriteCharacterCell.self)) {( _, character, cell) in
-                cell.setData(character: character)
+                                                        cellType: FavouriteCharacterCell.self)) {[weak self]( _, character, cell) in
+                cell.setData(character: character, keyword: self?.searchBar.text ?? "")
             }.disposed(by: disposeBag)
     }
     

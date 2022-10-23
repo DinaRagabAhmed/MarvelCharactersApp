@@ -60,6 +60,9 @@ extension CharactersService: TargetType {
         case .getCharachters(let name, let limit, let offset):
             var parameters = ["offset": offset, "limit": limit] as [String: Any]
             if name != nil {
+                /*
+                 I found that "name" parameter in Marvel API returns only characters that its names match exactly the text in search bar(== not contains) so i sent email asking about that and i used "nameStartsWith" to workaroud this issue
+                 */
                 parameters["nameStartsWith"] = name
             }
             return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)

@@ -47,5 +47,9 @@ extension NetworkManager {
         }
 
     }
+    
+    func cancelAllRequests() {
+        self.provider.session.cancelAllRequests()
+    }
 
 }
