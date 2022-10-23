@@ -3,16 +3,19 @@
 
 ### Technologies and patterns
 - Architecture
-  - MVVM with RxSwift, router and coordinator
+  - MVVM with RxSwift, router and coordinator.
 
 - Dependency management
-  - Cocoa Pods
+  - CocoaPods.
   
 - Network layer
-  - Moya
+  - Moya.
  
 - Design 
   - UIKit(XIBs).
+  
+- Decisions
+  - If there are empty media items(Events - Comics - Series - Stories), these sections will be removed.
 
 
 
