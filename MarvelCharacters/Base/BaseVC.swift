@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import MBProgressHUD
-import Toast
+import Toast_Swift
 
 // MARK: - Base View Controller
 class BaseVC: UIViewController {
@@ -65,7 +65,7 @@ class BaseVC: UIViewController {
 extension BaseVC: BaseView {
     
     func showGeneralError() {
-        showMessageToUser(msg: "generalError")
+        showMessageToUser(msg: "generalError".localized())
     }
     
     func showLoading() {
@@ -84,7 +84,7 @@ extension BaseVC: BaseView {
     }
     
     func showNetworkError() {
-        showMessageToUser(msg: "networkError")
+        showMessageToUser(msg: "networkError".localized())
     }
     
     func showMessageToUser(msg: String) {

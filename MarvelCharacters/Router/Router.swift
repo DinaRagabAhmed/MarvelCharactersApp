@@ -51,11 +51,14 @@ extension Router: Routing {
         }
         
         viewController.modalPresentationStyle = .overFullScreen
+        viewController.modalTransitionStyle = .crossDissolve
+
         navigationController.present(viewController, animated: true, completion: nil)
         viewController.presentationController?.delegate = self
     }
     
     func dismissModule(animated: Bool) {
+        executeClosure(self.navigationController.presentedViewController ?? UIViewController())
         navigationController.dismiss(animated: true)
     }
         
@@ -110,5 +113,3 @@ extension Router: UIAdaptivePresentationControllerDelegate {
         executeClosure(presentationController.presentedViewController)
     }
 }
-
-
