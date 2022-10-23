@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="cancelBtn" destination="dLD-dO-n1o" id="2fB-g9-cyn"/>
                 <outlet property="charactersCollectionView" destination="Vqi-JQ-7So" id="f9K-cu-BL1"/>
+                <outlet property="noDataView" destination="z97-xa-BTv" id="BSn-F6-dxv"/>
                 <outlet property="searchBar" destination="8Ib-wl-D9A" id="BD0-CA-tWW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -44,6 +45,10 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z97-xa-BTv" customClass="NoDataView" customModule="MarvelCharacters" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.21761306863746896" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,8 +59,12 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vqi-JQ-7So" secondAttribute="bottom" id="A3X-jL-qpL"/>
                 <constraint firstItem="dLD-dO-n1o" firstAttribute="centerY" secondItem="8Ib-wl-D9A" secondAttribute="centerY" id="FEC-7O-bUE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vqi-JQ-7So" secondAttribute="trailing" id="FXk-ul-kaH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="z97-xa-BTv" secondAttribute="trailing" id="Otc-yo-4iU"/>
                 <constraint firstItem="8Ib-wl-D9A" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="TIF-g8-aNB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="z97-xa-BTv" secondAttribute="bottom" id="XcY-GH-YeF"/>
+                <constraint firstItem="z97-xa-BTv" firstAttribute="top" secondItem="8Ib-wl-D9A" secondAttribute="bottom" id="aZx-aF-HlE"/>
                 <constraint firstItem="Vqi-JQ-7So" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cSe-4F-Kwn"/>
+                <constraint firstItem="z97-xa-BTv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sWL-8P-Wap"/>
                 <constraint firstItem="8Ib-wl-D9A" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="vjg-lL-ZL3"/>
             </constraints>
             <point key="canvasLocation" x="139" y="45"/>

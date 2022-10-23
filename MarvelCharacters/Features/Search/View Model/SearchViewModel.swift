@@ -23,6 +23,7 @@ class SearchViewModel: BaseViewModel {
         let charactersObservable: Observable<[MarvelCharacter]>
         let infiniteScrollObservable: Observable<InfiniteScrollStatus>
         let screenResultObservable: Observable<SearchResult>
+        let screenStateObservable: Observable<ScreenState>
     }
     
     let output: Output
@@ -33,6 +34,7 @@ class SearchViewModel: BaseViewModel {
     private let screenResultSubject = PublishSubject<SearchResult>()
     private let cancelSubject = PublishSubject<Void>()
     private let selectedCharacterSubject = PublishSubject<MarvelCharacter>()
+    private let screenStateSubject = PublishSubject<ScreenState>()
 
     var dataManager: DataManager?
 
@@ -42,7 +44,8 @@ class SearchViewModel: BaseViewModel {
                            selectedCharacterObserver: selectedCharacterSubject.asObserver())
         self.output = Output(charactersObservable: charactersSubject.asObservable(),
                              infiniteScrollObservable: infiniteScrollSubject.asObservable(),
-                             screenResultObservable: screenResultSubject.asObservable())
+                             screenResultObservable: screenResultSubject.asObservable(),
+                             screenStateObservable: screenStateSubject.asObservable())
         
         super.init()
         subscribeToCancelEvent()
@@ -73,6 +76,8 @@ extension SearchViewModel {
         self.infiniteScrollSubject.onNext(.reset)
         if !keyword.isEmpty {
             self.getCharactersList(keyword: keyword)
+        } else {
+            self.screenStateSubject.onNext(.dataLoaded)
         }
     }
     
@@ -93,11 +98,9 @@ extension SearchViewModel {
                 case .success (let data):
                     self.handlePagination(result: data?.results ?? [])
 
-                case .failure(let error):
+                case .failure:
                     if !Utils.isConnectedToNetwork() {
                         self.setError(error: .networkError)
-                    } else {
-                        self.setError(error: error.type ?? ErrorTypes.generalError)
                     }
                 }
             }, onError: { [weak self](error) in
@@ -116,14 +119,16 @@ extension SearchViewModel {
 
         self.infiniteScrollSubject.onNext(.finish)
         if( result.isEmpty && charachters.isEmpty) {
-            print("no data") // no data
+            self.screenStateSubject.onNext(.noData)
             self.infiniteScrollSubject.onNext(.remove)
 
         } else if (!charachters.isEmpty && result.isEmpty ) {
-            print("stop infintie scrolling") // no more data
+            self.screenStateSubject.onNext(.dataLoaded)
             self.infiniteScrollSubject.onNext(.remove)
         } else {
             self.infiniteScrollSubject.onNext(.finish)
+            self.screenStateSubject.onNext(.dataLoaded)
+
             charachters.append(contentsOf: result)
             self.offset += self.limit
 

@@ -111,17 +111,15 @@ extension CharactersListViewModel {
         var charachters = self.charactersSubject.value
 
         self.infiniteScrollSubject.onNext(.finish)
-        if( result.isEmpty && charachters.isEmpty) {
-            print("no data") // no data
+        if( result.isEmpty && charachters.isEmpty) { // no data
             self.infiniteScrollSubject.onNext(.remove)
             self.screenStateSubject.onNext(.noData)
 
         } else if (!charachters.isEmpty && result.isEmpty ) {
-            print("stop infintie scrolling") // no more data
+            // stop infintie scrolling
             self.infiniteScrollSubject.onNext(.remove)
             self.screenStateSubject.onNext(.dataLoaded)
         } else {
-            print("Populate data") // data add it to array
             self.infiniteScrollSubject.onNext(.finish)
             self.screenStateSubject.onNext(.dataLoaded)
 

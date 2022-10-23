@@ -41,7 +41,7 @@ extension NetworkManager {
             } onCompleted: {
                 print("onCompleted")
             } onDisposed: {
-                print("onDisposed in network manager")
+                print("onDisposed")
             }.disposed(by: self?.disposeBag ?? DisposeBag())
             return Disposables.create()
         }

@@ -18,16 +18,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-V5-W8l">
-                    <rect key="frame" x="30" y="436" width="354" height="24"/>
+                    <rect key="frame" x="30" y="94" width="354" height="24"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="zdT-V5-W8l" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6AE-j0-SGX"/>
+                <constraint firstItem="zdT-V5-W8l" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="3tE-zx-tTT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zdT-V5-W8l" secondAttribute="trailing" constant="30" id="GUQ-De-a7Y"/>
                 <constraint firstItem="zdT-V5-W8l" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="b4o-fM-S3x"/>
             </constraints>

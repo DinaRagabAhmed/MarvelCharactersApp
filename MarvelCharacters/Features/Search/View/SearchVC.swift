@@ -19,7 +19,8 @@ class SearchVC: BaseVC {
     @IBOutlet weak var charactersCollectionView: UICollectionView!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+    @IBOutlet weak var noDataView: NoDataView!
+
     // MARK: - Properties
     var viewModel: SearchViewModel!
     
@@ -38,6 +39,7 @@ class SearchVC: BaseVC {
        subscribeToCancelEvent()
        subscribeToCharacterSelection()
        subscribeToInfiniteScroll()
+       subscribeToScreenState()
     }
     
     func setupView() {
@@ -123,6 +125,25 @@ extension SearchVC {
                     self.charactersCollectionView.finishInfiniteScroll()
                 case .reset:
                     self.setupPagination()
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func subscribeToScreenState() {
+        viewModel
+            .output.screenStateObservable
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] screenStatus in
+                guard let self = self else { return }
+                switch screenStatus {
+                case .dataLoaded:
+                    self.charactersCollectionView.isHidden = false
+                    self.noDataView.isHidden = true
+                case .noData:
+                    self.charactersCollectionView.isHidden = true
+                    self.noDataView.isHidden = false
+                case .noNetwork:
+                    print("no network")
                 }
             }).disposed(by: disposeBag)
     }

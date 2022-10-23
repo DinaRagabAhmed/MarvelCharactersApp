@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupApplicationCoordinator()
         setupIntialView()
         enableIQkeyboard()
+        customizeToastMessageStyle()
         
         return true
     }

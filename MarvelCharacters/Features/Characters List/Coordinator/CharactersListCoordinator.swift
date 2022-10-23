@@ -64,7 +64,7 @@ extension CharactersListCoordinator {
             case .characterDetails(let character):
                 self?.redirectToCharacterDetailsScreen(character: character)
             case .back:
-                print("back")
+                print("Dismiss from search screen")
             }
         }).disposed(by: self.bag)
     }

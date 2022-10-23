@@ -7,6 +7,7 @@
 
 import Foundation
 import IQKeyboardManagerSwift
+import Toast_Swift
 
 // MARK: - Responsible For any UI Modification and handle application flow
 extension AppDelegate {
@@ -25,5 +26,9 @@ extension AppDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = false
+    }
+    
+    func customizeToastMessageStyle() {
+        ToastManager.shared.style.verticalPadding = 10.0
     }
 }
